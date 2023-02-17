@@ -4,3 +4,4 @@ src/OpenWork.Services    @sanjarmavlonov
 src/OpenWork.Web         @shoxruxhusenov
 src/OpenWork.Domain      @Kkkiittt
 src/OpenWork.UnitTest    @Kkkiittt
+src/OpenWork.IntegrationTest @Kkkiittt

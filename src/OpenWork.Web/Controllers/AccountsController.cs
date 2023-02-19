@@ -16,5 +16,10 @@ namespace OpenWork.Web.Controllers
         {
             return View("Register");
         }
+        [HttpGet("Email")]
+        public ViewResult Email()
+        {
+            return View("EmailV");
+        }
     }
 }

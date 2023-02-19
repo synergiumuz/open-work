@@ -29,11 +29,9 @@ namespace OpenWork.Services.Services
 		public async Task<string> LoginAsync(UserLoginDto dto)
 		{
 			
-			User? employee = await repository.Users.FirstOrDefaultAsync(x => x.Email == dto.Email);
+			User? employee = await _repository.Users.FirstOrDefaultAsync(x => x.Email == dto.Email);
 			if (employee is null)
 				throw new ModelErrorException(nameof(dto.Email), "Bunday email bilan foydalanuchi mavjud emas!");
-			//if (!employee.EmailVerified)
-			//	throw new StatusCodeException(HttpStatusCode.BadRequest, "Email not verified");
 			bool hashResult = _hasher.Verify(employee.Password, dto.Password, employee.Email);
 			if (hashResult)
 			{
@@ -47,20 +45,20 @@ namespace OpenWork.Services.Services
 
 		public async Task<bool> RegisterAsync(UserRegisterDto dto)
 		{
-			//try
-			//{
-			if (_repository.Users.GetAll().Any(x => x.Email == dto.Email))
+			try
+			{
+				if (_repository.Users.GetAll().Any(x => x.Email == dto.Email))
 			{
 				throw new Exception();
 			}
 			User entity = _userRegisterDto;
 			_repository.Users.Add(entity);
 			return await _repository.SaveChanges() > 0;
-			//}
-			//catch
-			//{
-			//	return false;
-			//}
+			}
+			catch
+			{
+				return false;
+			}
 		}
 	}
 }

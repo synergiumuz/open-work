@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OpenWork.Services.Common.Exceptions
 {
-	public class ModelErrorException
+	public class ModelErrorException : Exception
 	{
 		public string Property { get; set; } = String.Empty;
 

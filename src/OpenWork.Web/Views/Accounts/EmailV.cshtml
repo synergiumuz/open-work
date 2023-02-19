@@ -1,0 +1,28 @@
+﻿@{
+    Layout = "_Account.cshtml";
+}
+
+<div class="container ">
+    <div class="row">
+        <div class="offset-md-2 col-lg-4 col-md-7 offset-lg-4 offset-md-3">
+            <div class="panel border bg-white">
+                <div class="panel-heading">
+                    <h3 class="pt-3 font-weight-bold">Enter verifi</h3>
+                </div>
+                <div class="panel-body p-3">
+                    <form action="login_script.php" method="POST">
+                        <div class="form-outline mb-4 m-2">
+                            <input type="number" id="form2Example1" class="form-control" placeholder="Enter verified" />
+                        </div>
+                        <a class="btn btn-primary btn-block mt-3" asp-action="index" asp-controller="home" style="width:100%;">Enter</a>
+                        <div class="text-center pt-4 text-muted">
+                            Did not receive the code ? <a asp-action="register" asp-controller="accounts">No!</a>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -18,4 +18,8 @@
     <ProjectReference Include="..\OpenWork.Domain\OpenWork.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Interfaces\Common\" />
+  </ItemGroup>
+
 </Project>

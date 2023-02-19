@@ -1,9 +1,11 @@
 ﻿using OpenWork.Domain.Common;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace OpenWork.Domain.Entities
 {
@@ -18,5 +20,7 @@ namespace OpenWork.Domain.Entities
 		public bool EmailVerified { get; set; }
 
 		public string Password { get; set; } = string.Empty;
+
+		public virtual IList<Comment> Comments { get; set; }
 	}
 }

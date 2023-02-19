@@ -1,10 +1,4 @@
 ﻿using OpenWork.Domain.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace OpenWork.Domain.Entities
 {
 	public class Worker : Auditable
@@ -28,5 +22,9 @@ namespace OpenWork.Domain.Entities
 		public int Pros { get; set; }
 
 		public int Cons { get; set; }
+
+		public virtual IList<Business> Businesses { get; set; }
+		public virtual IList<Sphere> Spheres { get; set; }
+		public virtual IList<Comment> Comments { get; set; }
 	}
 }

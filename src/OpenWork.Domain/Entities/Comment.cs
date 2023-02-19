@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OpenWork.Domain.Entities
 {
-	public class Commentary : Auditable
+	public class Comment : Auditable
 	{
 		public long UserId { get; set; }
 

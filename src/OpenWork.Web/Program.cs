@@ -1,7 +1,10 @@
+using OpenWork.Web.Configurations;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.ConfigureDataAccess();
 
 var app = builder.Build();
 

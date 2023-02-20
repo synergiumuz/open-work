@@ -34,7 +34,7 @@ namespace OpenWork.Services.Dtos
 				Email = userDto.Email,
 				Surname = userDto.SurName,
 				Name = userDto.Name,
-				Password = userDto.Password,
+				//Password = userDto.Password,
 				EmailVerified = false				
 			};
 		}

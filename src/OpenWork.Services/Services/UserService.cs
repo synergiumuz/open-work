@@ -1,4 +1,4 @@
-﻿using OpenWork.DataAccess.Interfaces;
+using OpenWork.DataAccess.Interfaces;
 using OpenWork.Domain.Entities;
 using OpenWork.Services.Common.Exceptions;
 using OpenWork.Services.Dtos;

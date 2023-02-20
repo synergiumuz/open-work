@@ -6,12 +6,11 @@
     font-family: 'Poppins', sans-serif;
 }
 body{
+
     height: 100vh;
     background: linear-gradient(to top, #c9c9ff 50%, #9090fa 90%) no-repeat;
 }
-.container{
-    margin: 50px auto;
-}
+
 .panel-heading{
     text-align: center;
     margin-bottom: 10px;
@@ -23,7 +22,6 @@ a:hover{
 .form-inline label{
     padding-left: 10px;
     margin: 0;
-    cursor: pointer;
 }
 .btn.btn-primary{
     margin-top: 20px;
@@ -39,7 +37,7 @@ a:hover{
     padding: 5px;
     display: flex;
     align-items: center;
-    cursor: pointer;
+ 
     border: 1px solid #ddd;
     color: #4343ff;
 }

@@ -14,11 +14,11 @@ namespace OpenWork.Services.Services
 	public class UserService : IUserService
 	{
 		private readonly IHasher _hasher;
-		private readonly IUnitOfWork _repository;
+		private readonly IUserService _repository;
 		private readonly UserLoginDto _userLoginDto;
 		private readonly UserRegisterDto _userRegisterDto;
 
-		public UserService(IUnitOfWork repository, IHasher hasher, UserLoginDto userLoginDto, UserRegisterDto userRegisterDto)	
+		public UserService(IUserService repository, IHasher hasher, UserLoginDto userLoginDto, UserRegisterDto userRegisterDto)	
 		{
 			_hasher = hasher;
 			_repository = repository;

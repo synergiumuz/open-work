@@ -25,8 +25,8 @@ namespace OpenWork.Services.Common.Security
             var claims = new[]
             {
                 new Claim("Id", user.Id.ToString()),
-                new Claim(ClaimTypes.Email, user.Email),
-                new Claim(ClaimTypes.Role, ClientRole.User.ToString())
+                new Claim("Email", user.Email),
+                new Claim(ClaimTypes.Role, "user")
             };
 
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["SecretKey"]));
@@ -43,8 +43,8 @@ namespace OpenWork.Services.Common.Security
             var claims = new[]
             {
                 new Claim("Id", worker.Id.ToString()),
-                new Claim(ClaimTypes.Email, worker.Email),
-                new Claim(ClaimTypes.Role, ClientRole.User.ToString())
+                new Claim("Email", worker.Email),
+                new Claim(ClaimTypes.Role, "worker")
             };
 
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["SecretKey"]));

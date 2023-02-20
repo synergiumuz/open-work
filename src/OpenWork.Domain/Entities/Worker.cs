@@ -25,8 +25,8 @@ namespace OpenWork.Domain.Entities
 
 		public int Cons { get; set; }
 
-		public virtual IList<Business> Businesses { get; set; }
-		public virtual IList<Sphere> Spheres { get; set; }
-		public virtual IList<Comment> Comments { get; set; }
+		public virtual IList<Business> Businesses { get; set; } = new List<Business>(); 
+		public virtual IList<Sphere> Spheres { get; set; } = new List<Sphere>(); 
+		public virtual IList<Comment> Comments { get; set; } = new List<Comment>();
 	}
 }

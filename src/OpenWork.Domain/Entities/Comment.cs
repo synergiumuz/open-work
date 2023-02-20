@@ -11,13 +11,13 @@ namespace OpenWork.Domain.Entities
 	{
 		public long UserId { get; set; }
 
-		public virtual User User { get; set; }
+		public virtual User User { get; set; } = default!;
 
 		public long WorkerId { get; set; }
 
-		public virtual Worker Worker { get; set; }
+		public virtual Worker Worker { get; set; } = default!;
 
-		public string Content { get; set; }
+		public string Content { get; set; } = String.Empty;
 
 		public bool Satisfied { get; set; }
 	}

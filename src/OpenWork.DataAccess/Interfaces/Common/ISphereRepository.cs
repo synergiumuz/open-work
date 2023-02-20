@@ -4,5 +4,5 @@ namespace OpenWork.DataAccess.Interfaces.Common;
 
 public interface ISphereRepository : IBasicRepository<Sphere>
 {
-	public IQueryable<Sphere> GetByCategory(Category category);
+	public IQueryable<Sphere> GetByCategory(long categoryId);
 }

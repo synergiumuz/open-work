@@ -13,19 +13,24 @@ public class UnitOfWork : IUnitOfWork
 	{
 		_context = context;
 		Users = new UserRepository(_context);
+		Businesses = new BusinessRepository(_context);
+		Categories = new CategoryRepository(_context);
+		Comments = new CommentRepository(_context);
+		Spheres = new SphereRepository(_context);
+		Workers = new WorkerRepository(_context);
 	}
 
-	public IBusinessRepository Businesses => throw new NotImplementedException();
+	public IBusinessRepository Businesses { get; }
 
-	public ICategoryRepository Categories => throw new NotImplementedException();
+	public ICategoryRepository Categories { get; }
 
-	public ICommentRepository Comments => throw new NotImplementedException();
+	public ICommentRepository Comments { get; }
 
-	public ISphereRepository Spheres => throw new NotImplementedException();
+	public ISphereRepository Spheres { get; }
 
 	public IUserRepository Users { get; }
 
-	public IWorkerRepository Workers => throw new NotImplementedException();
+	public IWorkerRepository Workers { get; }
 
 	public async Task<int> SaveChanges()
 	{

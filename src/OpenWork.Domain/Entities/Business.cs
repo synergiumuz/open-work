@@ -11,7 +11,7 @@ namespace OpenWork.Domain.Entities
 	{
 		public long WorkerId { get; set; }
 
-		public virtual Worker Worker { get; set; }
+		public virtual Worker Worker { get; set; } = default!;
 
 		public DateTime Start { get; set; }
 

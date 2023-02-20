@@ -23,6 +23,6 @@ namespace OpenWork.Domain.Entities
 
         public string Salt { get; set; } = string.Empty;
 
-        public virtual IList<Comment> Comments { get; set; }
+        public virtual IList<Comment> Comments { get; set; } = new List<Comment>();
 	}
 }

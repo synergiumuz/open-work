@@ -27,4 +27,8 @@ public class UnitOfWork : IUnitOfWork
 
 	public IWorkerRepository Workers => throw new NotImplementedException();
 
+	public async Task<int> SaveChanges()
+	{
+		return await _context.SaveChangesAsync();
+	}
 }

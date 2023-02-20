@@ -1,15 +1,10 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using OpenWork.Domain.Entities;
-using OpenWork.Domain.Enums;
 using OpenWork.Services.Interfaces.Security;
-using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace OpenWork.Services.Common.Security
 {
@@ -33,7 +28,7 @@ namespace OpenWork.Services.Common.Security
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature);
 
             var tokenDescriptor = new JwtSecurityToken(_config["Issuer"], _config["Audience"], claims,
-                expires: DateTime.Now.AddMinutes(double.Parse(_config["Lifetime"])),
+                expires: DateTime.Now.AddMonths(int.Parse(_config["Lifetime"])),
                 signingCredentials: credentials);
             return new JwtSecurityTokenHandler().WriteToken(tokenDescriptor);
         }
@@ -51,7 +46,7 @@ namespace OpenWork.Services.Common.Security
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature);
 
             var tokenDescriptor = new JwtSecurityToken(_config["Issuer"], _config["Audience"], claims,
-                expires: DateTime.Now.AddMinutes(double.Parse(_config["Lifetime"])),
+                expires: DateTime.Now.AddMonths(int.Parse(_config["Lifetime"])),
                 signingCredentials: credentials);
             return new JwtSecurityTokenHandler().WriteToken(tokenDescriptor);
         }

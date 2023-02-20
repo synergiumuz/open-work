@@ -1,0 +1,42 @@
+﻿@using OpenWork.Services.Dtos
+@model UserRegisterDto;
+@{
+    Layout = "_Account.cshtml";
+}
+<div class="panel border bg-white" style="margin-top: 100px; margin-left: auto; margin-right: auto; width: 400px">
+    <div class="panel-heading pt-4">
+        <h3 class="font-weight-bold">Register</h3>
+    </div>
+    <div class="panel-body">
+        <form asp-action="register" asp-controller="users" method="post">
+            <div class="m-4" >
+                <div class="input-field">
+                <input asp-for=Name type="text"  class="form-control" placeholder="First Name" />
+                </div><span asp-validation-for=Name></span>
+            </div>
+            <div class="m-4">
+                 <div class="input-field">
+                <input asp-for=SurName type="text"  class="form-control" placeholder="Last Name" />
+                </div>
+                <span asp-validation-for=SurName></span>
+            </div>
+            <div class="m-4">
+                <input asp-for=Email type="email" id="form2Example1" class="form-control" placeholder="Username or Email" />
+            </div>
+            <span asp-validation-for=Email></span>
+
+            <div class="m-4">
+                <div class="input-field">
+                    <input asp-for=Password type="password" placeholder="Enter your Password" required>
+                </div>
+                <span asp-validation-for=Password></span>
+            </div>
+            <div class="me-4 mx-4">
+                <input type="submit" class="btn btn-primary w-100" value="Register">
+            </div>
+            <div class="text-center pt-4 pb-4 text-muted">
+                Do you have an account? <a asp-action="login" asp-controller="users">Log in</a>
+            </div>
+        </form>
+    </div>
+</div>

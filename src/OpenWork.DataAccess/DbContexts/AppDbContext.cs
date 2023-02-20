@@ -10,10 +10,10 @@ public class AppDbContext : DbContext
 	{
 
 	}
-	public virtual DbSet<Business> Businesses { get; set; } = default!;
-	public virtual DbSet<Category> Categories { get; set; } = default!;
-	public virtual DbSet<Comment> Comments { get; set; } = default!;
-	public virtual DbSet<Sphere> Spheres { get; set; } = default!;
-	public virtual DbSet<User> Users { get; set; } = default!;
-	public virtual DbSet<Worker> Workers { get; set; } = default!;
+	public virtual DbSet<Business> Businesses { get; } = default!;
+	public virtual DbSet<Category> Categories { get; } = default!;
+	public virtual DbSet<Comment> Comments { get; } = default!;
+	public virtual DbSet<Sphere> Spheres { get; } = default!;
+	public virtual DbSet<User> Users { get; } = default!;
+	public virtual DbSet<Worker> Workers { get; } = default!;
 }

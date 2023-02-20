@@ -19,10 +19,8 @@ namespace OpenWork.Domain.Entities
 
 		public bool EmailVerified { get; set; }
 
-        public string PasswordHash { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
 
-        public string Salt { get; set; } = string.Empty;
-
-        public virtual IList<Comment> Comments { get; set; }
+        public virtual IList<Comment> Comments { get; set; } = new List<Comment>();
 	}
 }

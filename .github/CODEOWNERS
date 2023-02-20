@@ -1,7 +1,6 @@
-.github                  @Kkkiittt
-src/OpenWork.DataAccess  @sanjarmavlonov
-src/OpenWork.Services    @sanjarmavlonov
-src/OpenWork.Web         @shoxruxhusenov
-src/OpenWork.Domain      @samandarbaxodirovich
-src/OpenWork.UnitTest    @Kkkiittt
-src/OpenWork.IntegrationTest @Kkkiittt
+.github                       @Kkkiittt
+src/OpenWork.DataAccess       @sanjarmavlonov
+src/OpenWork.Services         @sanjarmavlonov
+src/OpenWork.Domain           @Kkkiittt
+src/OpenWork.UnitTest         @Kkkiittt
+src/OpenWork.IntegrationTest  @Kkkiittt

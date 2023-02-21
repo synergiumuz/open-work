@@ -11,8 +11,6 @@ namespace OpenWork.Services.Services
 	{
 		private readonly IHasher _hasher;
 		private readonly IUnitOfWork _repository;
-		private readonly UserLoginDto _userLoginDto;
-		private readonly UserRegisterDto _userRegisterDto;
 		private readonly IAuthManager _authManager;
 
 		public UserService(IUnitOfWork repository, IHasher hasher, IAuthManager authManager)
@@ -26,10 +24,10 @@ namespace OpenWork.Services.Services
 		{
 
 			User? user = await _repository.Users.GetAsync(dto.Email);
-			if (user is null)
+			if(user is null)
 				throw new ModelErrorException(nameof(dto.Email), "Bunday email bilan foydalanuvchi mavjud emas!");
 			bool hashResult = _hasher.Verify(user.Password, dto.Password, user.Email);
-			if (hashResult)
+			if(hashResult)
 			{
 				return _authManager.GenerateToken(user);
 			}
@@ -43,11 +41,12 @@ namespace OpenWork.Services.Services
 		{
 			try
 			{
-				if (_repository.Users.GetAll().Any(x => x.Email == dto.Email))
+				if(_repository.Users.GetAll().Any(x => x.Email == dto.Email))
 				{
 					throw new Exception();
 				}
-				User entity = _userRegisterDto;
+				User entity = dto;
+				entity.Password = _hasher.Hash(dto.Password, entity.Email);
 				_repository.Users.Add(entity);
 				return await _repository.SaveChanges() > 0;
 			}

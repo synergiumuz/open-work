@@ -1,4 +1,6 @@
-﻿@{
+﻿@using OpenWork.Services.Dtos
+@model UserLoginDto
+@{
     Layout = "_Account.cshtml";
 }
 <div class="panel border bg-white" style="margin-top: 100px; margin-left: auto; margin-right: auto; width: 400px">
@@ -6,29 +8,29 @@
         <h3 class="font-weight-bold">Login</h3>
     </div>
     <div class="panel-body">
-        <form method="POST">
+        <form method="post" asp-action="login" asp-controller="users">
             <div class="m-4">
-                <input type="email" id="form2Example1" class="form-control" placeholder="Username or Email" />
+                <input type="email" asp-for=Email id="form2Example1" class="form-control" placeholder="Username or Email" />
             </div>
+            <span asp-validation-for=Email></span>
             <div class="m-4">
                 <div class="input-field">
                     <span class="fas fa-lock px-2"></span>
-                    <input type="password" placeholder="Enter your Password" required>
+                    <input type="password" asp-for=Password placeholder="Enter your Password" required>
                     <button class="btn bg-white text-muted">
                         <span class="far fa-eye-slash"></span>
                     </button>
                 </div>
+                <span asp-validation-for=Password></span>
             </div>
             <div class="me-4 mx-4">
-                <input type="checkbox" name="remember" id="remember">
-                <label for="remember" class="text-muted">Remember me</label>
                 <a href="#" id="forgot" class="font-weight-bold">Forgot password?</a>
             </div>
             <div class="me-4 mx-4">
-                <a class="btn btn-primary w-100" asp-action="index" asp-controller="home">Login</a>
+                <input type="submit" value="Login" class="btn btn-primary w-100" >
             </div>
             <div class="text-center pt-4 pb-4 text-muted">
-                Don't have an account? <a asp-action="register" asp-controller="accounts">Sign up</a>
+                Don't have an account? <a asp-action="register" asp-controller="users">Sign up</a>
             </div>
         </form>
     </div>

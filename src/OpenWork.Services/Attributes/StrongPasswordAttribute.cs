@@ -17,8 +17,8 @@ namespace OpenWork.Services.Attributes
                 string password = value.ToString()!;
                 if (password.Length < 8)
                     return new ValidationResult("Password must be at least 8 characters!");
-                if (password.Length > 50)
-                    return new ValidationResult("Password must be less than 50 characters!");
+                if (password.Length > 16)
+                    return new ValidationResult("Password must be less than 16 characters!");
 
                 var result = IsStrong(password);
 

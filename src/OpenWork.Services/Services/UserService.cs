@@ -15,12 +15,10 @@ namespace OpenWork.Services.Services
 		private readonly UserRegisterDto _userRegisterDto;
 		private readonly IAuthManager _authManager;
 
-		public UserService(IUnitOfWork repository, IHasher hasher, UserLoginDto userLoginDto, UserRegisterDto userRegisterDto, IAuthManager authManager)
+		public UserService(IUnitOfWork repository, IHasher hasher, IAuthManager authManager)
 		{
 			_hasher = hasher;
 			_repository = repository;
-			_userLoginDto = userLoginDto;
-			_userRegisterDto = userRegisterDto;
 			_authManager = authManager;
 		}
 

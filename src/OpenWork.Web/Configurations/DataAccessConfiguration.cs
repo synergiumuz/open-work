@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
 using OpenWork.DataAccess.DbContexts;
+using OpenWork.DataAccess.Interfaces;
+using OpenWork.DataAccess.Repositories;
 
 namespace OpenWork.Web.Configurations;
 
@@ -13,5 +15,6 @@ public static class DataAccessConfiguration
 		{
 			opt.UseNpgsql(config);
 		});
+		builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 	}
 }

@@ -1,3 +1,7 @@
+using OpenWork.DataAccess.Interfaces;
+using OpenWork.DataAccess.Repositories;
+using OpenWork.Services.Interfaces;
+using OpenWork.Services.Services;
 using OpenWork.Web.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -5,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.ConfigureDataAccess();
+builder.Services.AddService();
+
 
 var app = builder.Build();
 

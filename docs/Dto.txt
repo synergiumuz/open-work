@@ -1,0 +1,20 @@
+User
+	VerifyEmailDto -> email, code
+	UserForgotPasswordDto -> email
+	CommentDto -> WorkerID, Content,Satisfied
+Worker
+	WorkerRegisterDto -> Name, Surname,Email, Phone(?),Password
+	WorkerLoginDto -> email, password
+	VerifyPhoneDto -> Phone, Code
+	BusynessCreateDto -> Start,End
+	SkillSetDto -> SpherId 
+Admin
+	CatgoryCreateDto -> Name
+	SphereCreateDto -> Name,Description,CategoryId
+	BanDto -> email
+	DeleteCommentDto -> CommentId
+SuperAdmin
+	AdminCreateDto -> Email
+	
+	
+

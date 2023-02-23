@@ -15,9 +15,7 @@ namespace OpenWork.Domain.Entities
 
 		public bool PhoneVerified { get; set; }
 
-        public string PasswordHash { get; set; } = string.Empty;
-
-        public string Salt { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
 
         public DateTime LastSeen { get; set; }
 
@@ -25,7 +23,9 @@ namespace OpenWork.Domain.Entities
 
 		public int Cons { get; set; }
 
-		public virtual IList<Business> Businesses { get; set; } = new List<Business>(); 
+		public bool Banned{ get; set; }
+
+		public virtual IList<Busyness> Businesses { get; set; } = new List<Busyness>(); 
 		public virtual IList<Sphere> Spheres { get; set; } = new List<Sphere>(); 
 		public virtual IList<Comment> Comments { get; set; } = new List<Comment>();
 	}

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OpenWork.Domain.Entities
 {
-	public class Business : BaseEntity
+	public class Busyness : BaseEntity
 	{
 		public long WorkerId { get; set; }
 

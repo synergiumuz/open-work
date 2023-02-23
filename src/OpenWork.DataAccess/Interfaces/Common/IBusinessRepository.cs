@@ -2,7 +2,7 @@
 
 namespace OpenWork.DataAccess.Interfaces.Common;
 
-public interface IBusinessRepository : IBasicRepository<Business>
+public interface IBusinessRepository : IBasicRepository<Busyness>
 {
 
 }

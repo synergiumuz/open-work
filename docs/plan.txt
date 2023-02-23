@@ -1,0 +1,25 @@
+Anonim(User):
+    register
+    login
+    forgot password
+    verify email
+User:
+    view workers(all) with contacts(?), businesses by:
+        where(sphere, free(?)) orderby(rating, online)
+    delete account
+    edit account
+    rate worker(5 per day)
+Worker:
+    edit account
+    delete account
+    verify phone
+    add business
+    select skills(2 categories, 20 spheres max)
+Admin(no register):
+    add categories
+    add spheres
+    ban workers
+    delete rates
+    ban users
+SuperAdmin:
+    register admins

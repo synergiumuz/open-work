@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+
 using OpenWork.DataAccess.Interfaces;
 using OpenWork.Domain.Entities;
 using OpenWork.Services.Common.Exceptions;
@@ -41,7 +43,7 @@ namespace OpenWork.Services.Services
 		{
 			try
 			{
-				if(_repository.Users.GetAll().Any(x => x.Email == dto.Email))
+				if(await _repository.Users.GetAll().AnyAsync(x => x.Email == dto.Email))
 				{
 					throw new Exception();
 				}

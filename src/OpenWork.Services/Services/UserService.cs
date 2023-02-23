@@ -45,7 +45,7 @@ namespace OpenWork.Services.Services
 			{
 				if(await _repository.Users.GetAll().AnyAsync(x => x.Email == dto.Email))
 				{
-					throw new Exception();
+					throw new Exception("Bunaqa emailda user bor");
 				}
 				User entity = dto;
 				entity.Password = _hasher.Hash(dto.Password, entity.Email);

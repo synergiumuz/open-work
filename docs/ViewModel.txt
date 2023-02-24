@@ -1,0 +1,11 @@
+User
+	UserBaseViewModel -> name,surname,admin
+	UserViewModel -> email,
+	CommentViewModel -> Satisfied,Content,UserBaseVieModel
+Worker
+	WorkerBaseViewModel -> Name,Surname,LastSeen,Rating
+	WorkerViewModel -> Email,phone,Sphers,Comments
+Admin
+	CategoryViewModel -> List<Sphere>,
+	
+ 

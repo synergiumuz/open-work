@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OpenWork.Services.Common.Exceptions;
-using OpenWork.Services.Dtos;
+using OpenWork.Services.Dtos.User;
 using OpenWork.Services.Interfaces;
 
 namespace OpenWork.Web.Controllers

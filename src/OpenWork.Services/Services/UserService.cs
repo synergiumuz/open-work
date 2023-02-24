@@ -1,15 +1,13 @@
-using Microsoft.EntityFrameworkCore;
-
 using OpenWork.DataAccess.Interfaces;
 using OpenWork.Domain.Entities;
 using OpenWork.Services.Common.Exceptions;
-using OpenWork.Services.Dtos;
+using OpenWork.Services.Dtos.User;
 using OpenWork.Services.Interfaces;
 using OpenWork.Services.Interfaces.Security;
 
 namespace OpenWork.Services.Services
 {
-	public class UserService : IUserService
+    public class UserService : IUserService
 	{
 		private readonly IHasher _hasher;
 		private readonly IUnitOfWork _repository;
@@ -43,9 +41,9 @@ namespace OpenWork.Services.Services
 		{
 			try
 			{
-				if(await _repository.Users.GetAll().AnyAsync(x => x.Email == dto.Email))
+				if(_repository.Users.GetAll().Any(x => x.Email == dto.Email))
 				{
-					throw new Exception("Bunaqa emailda user bor");
+					throw new Exception();
 				}
 				User entity = dto;
 				entity.Password = _hasher.Hash(dto.Password, entity.Email);

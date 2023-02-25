@@ -1,17 +1,20 @@
-﻿using OpenWork.Services.Dtos;
+﻿using OpenWork.Services.Dtos.Users;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OpenWork.Services.Interfaces
+namespace OpenWork.Services.Interfaces;
+
+public interface IUserService
 {
-	public interface IUserService
-	{
-		public Task<bool> RegisterAsync(UserRegisterDto dto);
+	public Task<bool> RegisterAsync(UserRegisterDto dto);
 
-		public Task<string> LoginAsync(UserLoginDto dto);
+	public Task<string> LoginAsync(UserLoginDto dto);
 
-	}
+	public Task<bool> DeleteAsync();
+
+	public Task<bool> UpdateAsync(UserRegisterDto dto);
 }

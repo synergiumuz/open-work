@@ -1,11 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+
 using OpenWork.Services.Common.Exceptions;
-using OpenWork.Services.Dtos;
+using OpenWork.Services.Dtos.Users;
 using OpenWork.Services.Interfaces;
 
 namespace OpenWork.Web.Controllers
 {
-    [Route("users")]
+	[Route("users")]
     public class UsersController : Controller
     {
         private readonly IUserService _userService;

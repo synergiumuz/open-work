@@ -1,7 +1,7 @@
-using OpenWork.DataAccess.Interfaces;
-using OpenWork.DataAccess.Repositories;
-using OpenWork.Services.Interfaces;
-using OpenWork.Services.Services;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+
 using OpenWork.Web.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);

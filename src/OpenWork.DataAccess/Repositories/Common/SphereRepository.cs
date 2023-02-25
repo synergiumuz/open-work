@@ -1,4 +1,6 @@
-﻿using OpenWork.DataAccess.DbContexts;
+﻿using System.Linq;
+
+using OpenWork.DataAccess.DbContexts;
 using OpenWork.DataAccess.Interfaces.Common;
 using OpenWork.Domain.Entities;
 

@@ -1,4 +1,6 @@
-﻿using Npgsql.Internal.TypeHandlers.DateTimeHandlers;
+﻿using Microsoft.Extensions.DependencyInjection;
+
+using Npgsql.Internal.TypeHandlers.DateTimeHandlers;
 using OpenWork.DataAccess.Interfaces;
 using OpenWork.DataAccess.Interfaces.Common;
 using OpenWork.DataAccess.Repositories;
@@ -17,7 +19,6 @@ public static class ServiceConfiguration
     {
         services.AddHttpContextAccessor();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
-        services.AddScoped<IUserService, UserService>();
         services.AddScoped<IHasher, Hasher>();
         services.AddScoped<IAuthManager, AuthManager>();
     }

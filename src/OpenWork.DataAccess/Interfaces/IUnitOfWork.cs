@@ -1,4 +1,6 @@
-﻿using OpenWork.DataAccess.Interfaces.Common;
+﻿using System.Threading.Tasks;
+
+using OpenWork.DataAccess.Interfaces.Common;
 
 namespace OpenWork.DataAccess.Interfaces;
 

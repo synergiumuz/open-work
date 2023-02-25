@@ -1,4 +1,6 @@
-﻿using MailKit.Net.Smtp;
+﻿using System.Threading.Tasks;
+
+using MailKit.Net.Smtp;
 using Microsoft.Extensions.Configuration;
 using MimeKit;
 using MimeKit.Text;
@@ -7,10 +9,10 @@ using OpenWork.Services.Interfaces.Common;
 
 namespace OpenWork.Services.Services
 {
-	public class EmailManager : IEmailManager
+	public class EmailService : IEmailService
 	{
 		private readonly IConfiguration _config;
-		public EmailManager(IConfiguration configuration)
+		public EmailService(IConfiguration configuration)
 		{
 			_config = configuration.GetSection("EmailConnection");
 		}

@@ -1,4 +1,6 @@
-﻿using OpenWork.Domain.Common;
+﻿using System.Collections.Generic;
+
+using OpenWork.Domain.Common;
 
 namespace OpenWork.Domain.Entities
 {

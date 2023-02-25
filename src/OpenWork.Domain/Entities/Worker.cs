@@ -1,4 +1,7 @@
-﻿using OpenWork.Domain.Common;
+﻿using System;
+using System.Collections.Generic;
+
+using OpenWork.Domain.Common;
 namespace OpenWork.Domain.Entities
 {
 	public class Worker : Auditable
@@ -18,10 +21,6 @@ namespace OpenWork.Domain.Entities
         public string Password { get; set; } = string.Empty;
 
         public DateTime LastSeen { get; set; }
-
-		public int Pros { get; set; }
-
-		public int Cons { get; set; }
 
 		public bool Banned{ get; set; }
 

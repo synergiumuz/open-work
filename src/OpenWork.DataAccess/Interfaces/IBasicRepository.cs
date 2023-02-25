@@ -1,4 +1,7 @@
-﻿using OpenWork.Domain.Common;
+﻿using System.Linq;
+using System.Threading.Tasks;
+
+using OpenWork.Domain.Common;
 
 namespace OpenWork.DataAccess.Interfaces;
 

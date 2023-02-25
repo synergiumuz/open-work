@@ -1,4 +1,6 @@
-﻿using OpenWork.Domain.Entities;
+﻿using System.Threading.Tasks;
+
+using OpenWork.Domain.Entities;
 
 namespace OpenWork.DataAccess.Interfaces.Common;
 

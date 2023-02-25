@@ -22,10 +22,6 @@ namespace OpenWork.Domain.Entities
 
         public DateTime LastSeen { get; set; }
 
-		public int Pros { get; set; }
-
-		public int Cons { get; set; }
-
 		public bool Banned{ get; set; }
 
 		public virtual IList<Busyness> Businesses { get; set; } = new List<Busyness>(); 

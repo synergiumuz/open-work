@@ -1,4 +1,6 @@
-﻿using OpenWork.Domain.Entities;
+﻿using OpenWork.Domain.Common;
+using OpenWork.Domain.Entities;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace OpenWork.Services.ViewModels.Users
 {
-	public class UserViewModel
+	public class UserViewModel : BaseEntity
 	{
 		public string Email { get; set; } = string.Empty;
 
@@ -15,9 +17,10 @@ namespace OpenWork.Services.ViewModels.Users
 		{
 			return new UserViewModel()
 			{
+				Id = entity.Id,
 				Email = entity.Email,
 			};
 		}
 	}
-				
+
 }

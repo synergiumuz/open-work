@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Threading.Tasks;
+
+using Microsoft.EntityFrameworkCore;
 
 using OpenWork.DataAccess.DbContexts;
 using OpenWork.DataAccess.Interfaces.Common;

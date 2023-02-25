@@ -1,4 +1,6 @@
-﻿using OpenWork.Domain.Entities;
+﻿using OpenWork.Domain.Common;
+using OpenWork.Domain.Entities;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace OpenWork.Services.ViewModels.Admins
 {
-	public class CategoryViewModel
+	public class CategoryViewModel : BaseEntity
 	{
 		public List<Sphere> Spheres { get; set; } = new List<Sphere>();
 
@@ -15,7 +17,8 @@ namespace OpenWork.Services.ViewModels.Admins
 		{
 			return new CategoryViewModel()
 			{
-				Spheres =entity.Spheres.ToList(),
+				Id = entity.Id,
+				Spheres = entity.Spheres.ToList(),
 			};
 		}
 	}

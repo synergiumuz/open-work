@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 using OpenWork.Services.Attributes;
 
-namespace OpenWork.Services.Dtos.Worker;
+namespace OpenWork.Services.Dtos.Workers;
 
 public class WorkerLoginDto
 {

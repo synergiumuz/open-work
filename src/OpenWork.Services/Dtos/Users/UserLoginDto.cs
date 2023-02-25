@@ -1,20 +1,15 @@
-﻿using DataAnnotationsExtensions;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace OpenWork.Services.Dtos.User
+using OpenWork.Services.Attributes;
+
+namespace OpenWork.Services.Dtos.Users;
+
+public class UserLoginDto
 {
-    public class UserLoginDto
-    {
-        [Required, Email]
-        public string Email { get; set; } = string.Empty;
+	[Required(ErrorMessage = "Enter email"), Email(ErrorMessage = "Enter valid email")]
+	public string Email { get; set; } = string.Empty;
 
-        [Required, MaxLength(16, ErrorMessage = "Max Length 16"), MinLength(8, ErrorMessage = "Min Length 8")]
+	[Required(ErrorMessage = "Enter password"), MaxLength(16, ErrorMessage = "Max Length 16"), MinLength(8, ErrorMessage = "Min Length 8")]
 
-        public string Password { get; set; } = string.Empty;
-    }
+	public string Password { get; set; } = string.Empty;
 }

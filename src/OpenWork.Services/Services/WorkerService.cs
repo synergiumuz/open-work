@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using OpenWork.DataAccess.Interfaces.Common;
-using OpenWork.Services.Dtos.Worker;
+using OpenWork.Services.Dtos.Workers;
 using OpenWork.Services.Interfaces;
 
 namespace OpenWork.Services.Services;

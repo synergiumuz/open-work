@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
-namespace OpenWork.Services.Dtos.Worker
+namespace OpenWork.Services.Dtos.Workers;
+
+public class BusynessCreateDto
 {
-    public class BusynessCreateDto
-    {
-        public DateTime Start { get; set; }
+	[Required(ErrorMessage = "Choose start date")]
+	public DateTime Start { get; set; }
 
-        public DateTime End { get; set; }
-    }
+	[Required(ErrorMessage = "Choose end date")]
+	public DateTime End { get; set; }
 }

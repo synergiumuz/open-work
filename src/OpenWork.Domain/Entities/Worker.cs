@@ -18,14 +18,12 @@ namespace OpenWork.Domain.Entities
 
 		public bool PhoneVerified { get; set; }
 
-        public string Password { get; set; } = string.Empty;
+		public string Password { get; set; } = string.Empty;
 
         public DateTime LastSeen { get; set; }
 
-		public bool Banned{ get; set; }
-
 		public virtual IList<Busyness> Businesses { get; set; } = new List<Busyness>(); 
-		public virtual IList<Sphere> Spheres { get; set; } = new List<Sphere>(); 
+		public virtual IList<Skill> Spheres { get; set; } = new List<Skill>(); 
 		public virtual IList<Comment> Comments { get; set; } = new List<Comment>();
 	}
 }

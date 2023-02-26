@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace OpenWork.Services.Dtos.Admin;
-public class SphereCreateDto
+public class SkillCreateDto
 {
 	[Required(ErrorMessage = "Enter name of skill")]
 	public string Name { get; set; } = string.Empty;

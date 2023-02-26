@@ -1,4 +1,6 @@
-﻿using OpenWork.Domain.Entities;
+﻿using System.Collections.Generic;
+
+using OpenWork.Domain.Entities;
 
 namespace OpenWork.Services.ViewModels.Workers;
 
@@ -8,11 +10,9 @@ public class WorkerViewModel : WorkerBaseViewModel
 
 	public string Phone { get; set; } = string.Empty;
 
-	//may be List
-	public string Spheres { get; set; } = string.Empty;
+	public IList<Skill> Skills { get; set; } = new List<Skill>();
 
-	//may be List
-	public string Comments { get; set; } = string.Empty;
+	public IList<Comment> Comments { get; set; } = new List<Comment>();
 
 	public static implicit operator WorkerViewModel(Worker entity)
 	{

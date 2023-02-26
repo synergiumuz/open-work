@@ -11,6 +11,6 @@ namespace OpenWork.Domain.Entities
 	public class Category : BaseEntity
 	{
 		public string Name { get; set; } = string.Empty;
-		public virtual IList<Sphere> Spheres { get; set; } = new List<Sphere>();
+		public virtual IList<Skill> Skills { get; set; } = new List<Skill>();
 	}
 }

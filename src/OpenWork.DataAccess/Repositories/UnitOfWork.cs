@@ -18,7 +18,7 @@ public class UnitOfWork : IUnitOfWork
 		Businesses = new BusinessRepository(_context);
 		Categories = new CategoryRepository(_context);
 		Comments = new CommentRepository(_context);
-		Spheres = new SphereRepository(_context);
+		Spheres = new SkillRepository(_context);
 		Workers = new WorkerRepository(_context);
 	}
 
@@ -28,7 +28,7 @@ public class UnitOfWork : IUnitOfWork
 
 	public ICommentRepository Comments { get; }
 
-	public ISphereRepository Spheres { get; }
+	public ISkillRepository Spheres { get; }
 
 	public IUserRepository Users { get; }
 

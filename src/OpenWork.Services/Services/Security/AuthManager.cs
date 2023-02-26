@@ -2,6 +2,8 @@
 using Microsoft.IdentityModel.Tokens;
 using OpenWork.Domain.Entities;
 using OpenWork.Services.Interfaces.Security;
+
+using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;

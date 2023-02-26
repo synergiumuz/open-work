@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OpenWork.Domain.Common
+namespace OpenWork.Domain.Common;
+
+public class BaseEntity
 {
-	public class BaseEntity
-	{
-		public long Id { get; set; }
-	}
+	public long Id { get; set; }
 }

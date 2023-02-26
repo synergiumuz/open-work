@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OpenWork.Domain.Entities
 {
-	public class Sphere : BaseEntity
+	public class Skill : BaseEntity
 	{
 		public string Name { get; set; } = string.Empty;
 

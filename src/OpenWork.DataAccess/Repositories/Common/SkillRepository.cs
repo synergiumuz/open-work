@@ -6,13 +6,13 @@ using OpenWork.Domain.Entities;
 
 namespace OpenWork.DataAccess.Repositories.Common;
 
-public class SphereRepository : BasicRepository<Sphere>, ISphereRepository
+public class SkillRepository : BasicRepository<Skill>, ISkillRepository
 {
-	public SphereRepository(AppDbContext context) : base(context)
+	public SkillRepository(AppDbContext context) : base(context)
 	{
 	}
 
-	public IQueryable<Sphere> GetByCategory(long categoryId)
+	public IQueryable<Skill> GetByCategory(long categoryId)
 	{
 		return _set.Where(c => c.CategoryId == categoryId);
 	}

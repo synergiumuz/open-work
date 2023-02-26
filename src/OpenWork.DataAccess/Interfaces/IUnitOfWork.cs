@@ -9,7 +9,7 @@ public interface IUnitOfWork
 	public IBusinessRepository Businesses { get; }
 	public ICategoryRepository Categories { get; }
 	public ICommentRepository Comments { get; }
-	public ISphereRepository Spheres { get; }
+	public ISkillRepository Spheres { get; }
 	public IUserRepository Users { get; }
 	public IWorkerRepository Workers { get; }
 	public Task<int> SaveChanges();

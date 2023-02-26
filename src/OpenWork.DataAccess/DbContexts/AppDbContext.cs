@@ -13,7 +13,7 @@ public class AppDbContext : DbContext
 	public virtual DbSet<Busyness> Businesses { get; } = default!;
 	public virtual DbSet<Category> Categories { get; } = default!;
 	public virtual DbSet<Comment> Comments { get; } = default!;
-	public virtual DbSet<Sphere> Spheres { get; } = default!;
+	public virtual DbSet<Skill> Spheres { get; } = default!;
 	public virtual DbSet<User> Users { get; } = default!;
 	public virtual DbSet<Worker> Workers { get; } = default!;
 }

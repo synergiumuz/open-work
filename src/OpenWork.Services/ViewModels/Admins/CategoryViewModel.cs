@@ -11,14 +11,14 @@ namespace OpenWork.Services.ViewModels.Admins
 {
 	public class CategoryViewModel : BaseEntity
 	{
-		public List<Sphere> Spheres { get; set; } = new List<Sphere>();
+		public List<Skill> Skills { get; set; } = new List<Skill>();
 
 		public static implicit operator CategoryViewModel(Category entity)
 		{
 			return new CategoryViewModel()
 			{
 				Id = entity.Id,
-				Spheres = entity.Spheres.ToList(),
+				Skills = entity.Skills.ToList(),
 			};
 		}
 	}

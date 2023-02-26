@@ -12,5 +12,5 @@ public interface IUnitOfWork
 	public ISkillRepository Spheres { get; }
 	public IUserRepository Users { get; }
 	public IWorkerRepository Workers { get; }
-	public Task<int> SaveChanges();
+	public Task<int> SaveChangesAsync();
 }

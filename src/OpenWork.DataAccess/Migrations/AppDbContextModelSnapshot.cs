@@ -8,291 +8,290 @@ using OpenWork.DataAccess.DbContexts;
 
 #nullable disable
 
-namespace OpenWork.DataAccess.Migrations
+namespace OpenWork.DataAccess.Migrations;
+
+[DbContext(typeof(AppDbContext))]
+partial class AppDbContextModelSnapshot : ModelSnapshot
 {
-    [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    protected override void BuildModel(ModelBuilder modelBuilder)
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
-        {
 #pragma warning disable 612, 618
-            modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.12")
-                .HasAnnotation("Relational:MaxIdentifierLength", 63);
+        modelBuilder
+            .HasAnnotation("ProductVersion", "6.0.12")
+            .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+        NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("OpenWork.Domain.Entities.Busyness", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+        modelBuilder.Entity("OpenWork.Domain.Entities.Busyness", b =>
+            {
+                b.Property<long>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
-                    b.Property<DateTime>("End")
-                        .HasColumnType("timestamp with time zone");
+                b.Property<DateTime>("End")
+                    .HasColumnType("timestamp with time zone");
 
-                    b.Property<DateTime>("Start")
-                        .HasColumnType("timestamp with time zone");
+                b.Property<DateTime>("Start")
+                    .HasColumnType("timestamp with time zone");
 
-                    b.Property<long>("WorkerId")
-                        .HasColumnType("bigint");
+                b.Property<long>("WorkerId")
+                    .HasColumnType("bigint");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.HasIndex("WorkerId");
+                b.HasIndex("WorkerId");
 
-                    b.ToTable("Businesses");
-                });
+                b.ToTable("Businesses");
+            });
 
-            modelBuilder.Entity("OpenWork.Domain.Entities.Category", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+        modelBuilder.Entity("OpenWork.Domain.Entities.Category", b =>
+            {
+                b.Property<long>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
+                b.Property<string>("Name")
+                    .IsRequired()
+                    .HasColumnType("text");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.ToTable("Categories");
-                });
+                b.ToTable("Categories");
+            });
 
-            modelBuilder.Entity("OpenWork.Domain.Entities.Comment", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+        modelBuilder.Entity("OpenWork.Domain.Entities.Comment", b =>
+            {
+                b.Property<long>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasColumnType("text");
+                b.Property<string>("Content")
+                    .IsRequired()
+                    .HasColumnType("text");
 
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
+                b.Property<DateTime>("CreatedAt")
+                    .HasColumnType("timestamp with time zone");
 
-                    b.Property<bool>("Satisfied")
-                        .HasColumnType("boolean");
+                b.Property<bool>("Satisfied")
+                    .HasColumnType("boolean");
 
-                    b.Property<long>("UserId")
-                        .HasColumnType("bigint");
+                b.Property<long>("UserId")
+                    .HasColumnType("bigint");
 
-                    b.Property<long>("WorkerId")
-                        .HasColumnType("bigint");
+                b.Property<long>("WorkerId")
+                    .HasColumnType("bigint");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                b.HasIndex("UserId");
 
-                    b.HasIndex("WorkerId");
+                b.HasIndex("WorkerId");
 
-                    b.ToTable("Comments");
-                });
+                b.ToTable("Comments");
+            });
 
-            modelBuilder.Entity("OpenWork.Domain.Entities.Skill", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+        modelBuilder.Entity("OpenWork.Domain.Entities.Skill", b =>
+            {
+                b.Property<long>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
-                    b.Property<long>("CategoryId")
-                        .HasColumnType("bigint");
+                b.Property<long>("CategoryId")
+                    .HasColumnType("bigint");
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("text");
+                b.Property<string>("Description")
+                    .IsRequired()
+                    .HasColumnType("text");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
+                b.Property<string>("Name")
+                    .IsRequired()
+                    .HasColumnType("text");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
+                b.HasIndex("CategoryId");
 
-                    b.ToTable("Spheres");
-                });
+                b.ToTable("Spheres");
+            });
 
-            modelBuilder.Entity("OpenWork.Domain.Entities.User", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+        modelBuilder.Entity("OpenWork.Domain.Entities.User", b =>
+            {
+                b.Property<long>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
-                    b.Property<bool>("Admin")
-                        .HasColumnType("boolean");
+                b.Property<bool>("Admin")
+                    .HasColumnType("boolean");
 
-                    b.Property<bool>("Banned")
-                        .HasColumnType("boolean");
+                b.Property<bool>("Banned")
+                    .HasColumnType("boolean");
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("text");
+                b.Property<string>("Email")
+                    .IsRequired()
+                    .HasColumnType("text");
 
-                    b.Property<bool>("EmailVerified")
-                        .HasColumnType("boolean");
+                b.Property<bool>("EmailVerified")
+                    .HasColumnType("boolean");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
+                b.Property<string>("Name")
+                    .IsRequired()
+                    .HasColumnType("text");
 
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("text");
+                b.Property<string>("Password")
+                    .IsRequired()
+                    .HasColumnType("text");
 
-                    b.Property<string>("Surname")
-                        .IsRequired()
-                        .HasColumnType("text");
+                b.Property<string>("Surname")
+                    .IsRequired()
+                    .HasColumnType("text");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.ToTable("Users");
-                });
+                b.ToTable("Users");
+            });
 
-            modelBuilder.Entity("OpenWork.Domain.Entities.Worker", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+        modelBuilder.Entity("OpenWork.Domain.Entities.Worker", b =>
+            {
+                b.Property<long>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
+                b.Property<DateTime>("CreatedAt")
+                    .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("text");
+                b.Property<string>("Email")
+                    .IsRequired()
+                    .HasColumnType("text");
 
-                    b.Property<bool>("EmailVerified")
-                        .HasColumnType("boolean");
+                b.Property<bool>("EmailVerified")
+                    .HasColumnType("boolean");
 
-                    b.Property<DateTime>("LastSeen")
-                        .HasColumnType("timestamp with time zone");
+                b.Property<DateTime>("LastSeen")
+                    .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
+                b.Property<string>("Name")
+                    .IsRequired()
+                    .HasColumnType("text");
 
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("text");
+                b.Property<string>("Password")
+                    .IsRequired()
+                    .HasColumnType("text");
 
-                    b.Property<string>("Phone")
-                        .IsRequired()
-                        .HasColumnType("text");
+                b.Property<string>("Phone")
+                    .IsRequired()
+                    .HasColumnType("text");
 
-                    b.Property<bool>("PhoneVerified")
-                        .HasColumnType("boolean");
+                b.Property<bool>("PhoneVerified")
+                    .HasColumnType("boolean");
 
-                    b.Property<string>("Surname")
-                        .IsRequired()
-                        .HasColumnType("text");
+                b.Property<string>("Surname")
+                    .IsRequired()
+                    .HasColumnType("text");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.ToTable("Workers");
-                });
+                b.ToTable("Workers");
+            });
 
-            modelBuilder.Entity("SkillWorker", b =>
-                {
-                    b.Property<long>("SpheresId")
-                        .HasColumnType("bigint");
+        modelBuilder.Entity("SkillWorker", b =>
+            {
+                b.Property<long>("SpheresId")
+                    .HasColumnType("bigint");
 
-                    b.Property<long>("WorkersId")
-                        .HasColumnType("bigint");
+                b.Property<long>("WorkersId")
+                    .HasColumnType("bigint");
 
-                    b.HasKey("SpheresId", "WorkersId");
+                b.HasKey("SpheresId", "WorkersId");
 
-                    b.HasIndex("WorkersId");
+                b.HasIndex("WorkersId");
 
-                    b.ToTable("SkillWorker");
-                });
+                b.ToTable("SkillWorker");
+            });
 
-            modelBuilder.Entity("OpenWork.Domain.Entities.Busyness", b =>
-                {
-                    b.HasOne("OpenWork.Domain.Entities.Worker", "Worker")
-                        .WithMany("Businesses")
-                        .HasForeignKey("WorkerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+        modelBuilder.Entity("OpenWork.Domain.Entities.Busyness", b =>
+            {
+                b.HasOne("OpenWork.Domain.Entities.Worker", "Worker")
+                    .WithMany("Businesses")
+                    .HasForeignKey("WorkerId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
 
-                    b.Navigation("Worker");
-                });
+                b.Navigation("Worker");
+            });
 
-            modelBuilder.Entity("OpenWork.Domain.Entities.Comment", b =>
-                {
-                    b.HasOne("OpenWork.Domain.Entities.User", "User")
-                        .WithMany("Comments")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+        modelBuilder.Entity("OpenWork.Domain.Entities.Comment", b =>
+            {
+                b.HasOne("OpenWork.Domain.Entities.User", "User")
+                    .WithMany("Comments")
+                    .HasForeignKey("UserId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
 
-                    b.HasOne("OpenWork.Domain.Entities.Worker", "Worker")
-                        .WithMany("Comments")
-                        .HasForeignKey("WorkerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                b.HasOne("OpenWork.Domain.Entities.Worker", "Worker")
+                    .WithMany("Comments")
+                    .HasForeignKey("WorkerId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
 
-                    b.Navigation("User");
+                b.Navigation("User");
 
-                    b.Navigation("Worker");
-                });
+                b.Navigation("Worker");
+            });
 
-            modelBuilder.Entity("OpenWork.Domain.Entities.Skill", b =>
-                {
-                    b.HasOne("OpenWork.Domain.Entities.Category", "Category")
-                        .WithMany("Skills")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+        modelBuilder.Entity("OpenWork.Domain.Entities.Skill", b =>
+            {
+                b.HasOne("OpenWork.Domain.Entities.Category", "Category")
+                    .WithMany("Skills")
+                    .HasForeignKey("CategoryId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
 
-                    b.Navigation("Category");
-                });
+                b.Navigation("Category");
+            });
 
-            modelBuilder.Entity("SkillWorker", b =>
-                {
-                    b.HasOne("OpenWork.Domain.Entities.Skill", null)
-                        .WithMany()
-                        .HasForeignKey("SpheresId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+        modelBuilder.Entity("SkillWorker", b =>
+            {
+                b.HasOne("OpenWork.Domain.Entities.Skill", null)
+                    .WithMany()
+                    .HasForeignKey("SpheresId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
 
-                    b.HasOne("OpenWork.Domain.Entities.Worker", null)
-                        .WithMany()
-                        .HasForeignKey("WorkersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
+                b.HasOne("OpenWork.Domain.Entities.Worker", null)
+                    .WithMany()
+                    .HasForeignKey("WorkersId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
+            });
 
-            modelBuilder.Entity("OpenWork.Domain.Entities.Category", b =>
-                {
-                    b.Navigation("Skills");
-                });
+        modelBuilder.Entity("OpenWork.Domain.Entities.Category", b =>
+            {
+                b.Navigation("Skills");
+            });
 
-            modelBuilder.Entity("OpenWork.Domain.Entities.User", b =>
-                {
-                    b.Navigation("Comments");
-                });
+        modelBuilder.Entity("OpenWork.Domain.Entities.User", b =>
+            {
+                b.Navigation("Comments");
+            });
 
-            modelBuilder.Entity("OpenWork.Domain.Entities.Worker", b =>
-                {
-                    b.Navigation("Businesses");
+        modelBuilder.Entity("OpenWork.Domain.Entities.Worker", b =>
+            {
+                b.Navigation("Businesses");
 
-                    b.Navigation("Comments");
-                });
+                b.Navigation("Comments");
+            });
 #pragma warning restore 612, 618
-        }
     }
 }

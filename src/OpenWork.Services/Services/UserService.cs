@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 
 using OpenWork.DataAccess.Interfaces;
-using OpenWork.DataAccess.Interfaces.Common;
 using OpenWork.Domain.Entities;
 using OpenWork.Services.Dtos.Users;
 using OpenWork.Services.Interfaces;
@@ -28,7 +27,7 @@ public class UserService : IUserService
 
 	public async Task<bool> DeleteAsync()
 	{
-		await _repository.Users.DeleteAsync(_identity.Id);
+		_ = await _repository.Users.DeleteAsync(_identity.Id);
 		return await _repository.SaveChangesAsync() > 0;
 	}
 
@@ -46,7 +45,7 @@ public class UserService : IUserService
 	{
 		User entity = dto;
 		entity.Password = _hasher.Hash(dto.Password, dto.Email);
-		_repository.Users.Add(entity);
+		_ = _repository.Users.Add(entity);
 		return await _repository.SaveChangesAsync() > 0;
 	}
 
@@ -55,7 +54,7 @@ public class UserService : IUserService
 		User entity = dto;
 		entity.Password = _hasher.Hash(dto.Password, dto.Email);
 		entity.Id = _identity.Id;
-		_repository.Users.Update(entity);
+		_ = _repository.Users.Update(entity);
 		return await _repository.SaveChangesAsync() > 0;
 	}
 }

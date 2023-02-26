@@ -1,16 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
-using OpenWork.Domain.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace OpenWork.Domain.Entities
+using OpenWork.Domain.Common;
+
+namespace OpenWork.Domain.Entities;
+
+public class Category : BaseEntity
 {
-	public class Category : BaseEntity
-	{
-		public string Name { get; set; } = string.Empty;
-		public virtual IList<Skill> Skills { get; set; } = new List<Skill>();
-	}
+	public string Name { get; set; } = string.Empty;
+	public virtual IList<Skill> Skills { get; set; } = new List<Skill>();
 }

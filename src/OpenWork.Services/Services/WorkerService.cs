@@ -27,7 +27,7 @@ public class WorkerService : IWorkerService
 
 	public async Task<bool> DeleteAsync()
 	{
-		await _repository.Workers.DeleteAsync(_identity.Id);
+		_ = await _repository.Workers.DeleteAsync(_identity.Id);
 		return await _repository.SaveChangesAsync() > 0;
 	}
 
@@ -45,7 +45,7 @@ public class WorkerService : IWorkerService
 	{
 		Worker entity = dto;
 		entity.Password = _hasher.Hash(dto.Password, dto.Email);
-		_repository.Workers.Add(entity);
+		_ = _repository.Workers.Add(entity);
 		return await _repository.SaveChangesAsync() > 0;
 	}
 
@@ -54,7 +54,7 @@ public class WorkerService : IWorkerService
 		Worker entity = dto;
 		entity.Password = _hasher.Hash(dto.Password, dto.Email);
 		entity.Id = _identity.Id;
-		_repository.Workers.Update(entity);
+		_ = _repository.Workers.Update(entity);
 		return await _repository.SaveChangesAsync() > 0;
 	}
 }

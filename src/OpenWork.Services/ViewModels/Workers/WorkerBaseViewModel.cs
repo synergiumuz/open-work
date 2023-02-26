@@ -1,8 +1,7 @@
-﻿using OpenWork.Domain.Common;
-using OpenWork.Domain.Entities;
+﻿using System;
 
-using System;
-using System.Security.Cryptography.X509Certificates;
+using OpenWork.Domain.Common;
+using OpenWork.Domain.Entities;
 
 namespace OpenWork.Services.ViewModels.Workers;
 

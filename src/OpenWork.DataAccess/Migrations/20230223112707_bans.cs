@@ -2,68 +2,67 @@
 
 #nullable disable
 
-namespace OpenWork.DataAccess.Migrations
+namespace OpenWork.DataAccess.Migrations;
+
+public partial class bans : Migration
 {
-    public partial class bans : Migration
-    {
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.RenameColumn(
-                name: "Password",
-                table: "Workers",
-                newName: "Salt");
+	protected override void Up(MigrationBuilder migrationBuilder)
+	{
+		_ = migrationBuilder.RenameColumn(
+			name: "Password",
+			table: "Workers",
+			newName: "Salt");
 
-            migrationBuilder.AddColumn<bool>(
-                name: "Banned",
-                table: "Workers",
-                type: "boolean",
-                nullable: false,
-                defaultValue: false);
+		_ = migrationBuilder.AddColumn<bool>(
+			name: "Banned",
+			table: "Workers",
+			type: "boolean",
+			nullable: false,
+			defaultValue: false);
 
-            migrationBuilder.AddColumn<string>(
-                name: "PasswordHash",
-                table: "Workers",
-                type: "text",
-                nullable: false,
-                defaultValue: "");
+		_ = migrationBuilder.AddColumn<string>(
+			name: "PasswordHash",
+			table: "Workers",
+			type: "text",
+			nullable: false,
+			defaultValue: "");
 
-            migrationBuilder.AddColumn<bool>(
-                name: "Admin",
-                table: "Users",
-                type: "boolean",
-                nullable: false,
-                defaultValue: false);
+		_ = migrationBuilder.AddColumn<bool>(
+			name: "Admin",
+			table: "Users",
+			type: "boolean",
+			nullable: false,
+			defaultValue: false);
 
-            migrationBuilder.AddColumn<bool>(
-                name: "Banned",
-                table: "Users",
-                type: "boolean",
-                nullable: false,
-                defaultValue: false);
-        }
+		_ = migrationBuilder.AddColumn<bool>(
+			name: "Banned",
+			table: "Users",
+			type: "boolean",
+			nullable: false,
+			defaultValue: false);
+	}
 
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropColumn(
-                name: "Banned",
-                table: "Workers");
+	protected override void Down(MigrationBuilder migrationBuilder)
+	{
+		_ = migrationBuilder.DropColumn(
+			name: "Banned",
+			table: "Workers");
 
-            migrationBuilder.DropColumn(
-                name: "PasswordHash",
-                table: "Workers");
+		_ = migrationBuilder.DropColumn(
+			name: "PasswordHash",
+			table: "Workers");
 
-            migrationBuilder.DropColumn(
-                name: "Admin",
-                table: "Users");
+		_ = migrationBuilder.DropColumn(
+			name: "Admin",
+			table: "Users");
 
-            migrationBuilder.DropColumn(
-                name: "Banned",
-                table: "Users");
+		_ = migrationBuilder.DropColumn(
+			name: "Banned",
+			table: "Users");
 
-            migrationBuilder.RenameColumn(
-                name: "Salt",
-                table: "Workers",
-                newName: "Password");
-        }
-    }
+		_ = migrationBuilder.RenameColumn(
+			name: "Salt",
+			table: "Workers",
+			newName: "Password");
+	}
 }

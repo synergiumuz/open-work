@@ -2,8 +2,8 @@
 
 public interface IIdentityService
 {
-	public long Id { get; set; }
-	public string Name { get; set; }
-	public string Surname { get; set; }
-	public string Email { get; set; }
+	public long Id { get;  }
+	public string Name { get;  }
+	public string Surname { get; }
+	public string Email { get; }
 }

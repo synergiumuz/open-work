@@ -1,7 +1,8 @@
-﻿using OpenWork.Domain.Entities;
-using OpenWork.Services.Attributes;
-
+﻿using System;
 using System.ComponentModel.DataAnnotations;
+
+using OpenWork.Domain.Entities;
+using OpenWork.Services.Attributes;
 
 namespace OpenWork.Services.Dtos.Workers;
 
@@ -27,10 +28,10 @@ public class WorkerRegisterDto
 		{
 			Email = workerDto.Email,
 			Phone = workerDto.Phone,
-			Password = workerDto.Password,
 			Name = workerDto.Name,
+			CreatedAt = DateTime.Now,
+			LastSeen = DateTime.Now,
 			Surname = workerDto.Surname,
-			EmailVerified = false,
 		};
 	}
 }

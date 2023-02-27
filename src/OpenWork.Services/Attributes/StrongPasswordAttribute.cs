@@ -1,43 +1,42 @@
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
-namespace OpenWork.Services.Attributes
+namespace OpenWork.Services.Attributes;
+
+public class StrongPasswordAttribute : ValidationAttribute
 {
-	public class StrongPasswordAttribute : ValidationAttribute
+	protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
 	{
-		protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
+		if(value is null)
+			return new ValidationResult("Password can not be null!");
+		else
 		{
-			if(value is null)
-				return new ValidationResult("Password can not be null!");
-			else
-			{
-				string password = value.ToString()!;
-				if(password.Length < 8)
-					return new ValidationResult("Password must be at least 8 characters!");
-				if(password.Length > 16)
-					return new ValidationResult("Password must be less than 16 characters!");
+			string password = value.ToString()!;
+			if(password.Length < 8)
+				return new ValidationResult("Password must be at least 8 characters!");
+			if(password.Length > 16)
+				return new ValidationResult("Password must be less than 16 characters!");
 
-				var result = IsStrong(password);
+			(bool IsValid, string Message) result = IsStrong(password);
 
-				if(result.IsValid is false)
-					return new ValidationResult(result.Message);
+			if(result.IsValid is false)
+				return new ValidationResult(result.Message);
 
-				return ValidationResult.Success;
-			}
+			return ValidationResult.Success;
 		}
-		public (bool IsValid, string Message) IsStrong(string password)
-		{
-			bool isDigit = password.Any(x => char.IsDigit(x));
-			bool isLower = password.Any(x => char.IsLower(x));
-			bool isUpper = password.Any(x => char.IsUpper(x));
-			if(!isLower)
-				return (IsValid: false, Message: "Password must be at least one lower letter!");
-			if(!isUpper)
-				return (IsValid: false, Message: "Password must be at least one upper letter!");
-			if(!isDigit)
-				return (IsValid: false, Message: "Password must be at least one digit!");
+	}
+	public (bool IsValid, string Message) IsStrong(string password)
+	{
+		bool isDigit = password.Any(x => char.IsDigit(x));
+		bool isLower = password.Any(x => char.IsLower(x));
+		bool isUpper = password.Any(x => char.IsUpper(x));
+		if(!isLower)
+			return (IsValid: false, Message: "Password must be at least one lower letter!");
+		if(!isUpper)
+			return (IsValid: false, Message: "Password must be at least one upper letter!");
+		if(!isDigit)
+			return (IsValid: false, Message: "Password must be at least one digit!");
 
-			return (IsValid: true, Message: "Password is strong");
-		}
+		return (IsValid: true, Message: "Password is strong");
 	}
 }

@@ -34,7 +34,7 @@ public class UnitOfWork : IUnitOfWork
 
 	public IWorkerRepository Workers { get; }
 
-	public async Task<int> SaveChanges()
+	public async Task<int> SaveChangesAsync()
 	{
 		return await _context.SaveChangesAsync();
 	}

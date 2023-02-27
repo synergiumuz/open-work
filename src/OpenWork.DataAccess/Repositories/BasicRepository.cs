@@ -21,13 +21,13 @@ public class BasicRepository<T> : IBasicRepository<T> where T : BaseEntity
 
 	public bool Add(T entity)
 	{
-		_set.Add(entity);
+		_ = _set.Add(entity);
 		return true;
 	}
 
 	public async Task<bool> DeleteAsync(long id)
 	{
-		_set.Remove(await GetAsync(id));
+		_ = _set.Remove(await GetAsync(id));
 		return true;
 	}
 
@@ -38,13 +38,13 @@ public class BasicRepository<T> : IBasicRepository<T> where T : BaseEntity
 
 	public async Task<T> GetAsync(long id)
 	{
-		var entity = await GetAsync(id);
+		T? entity = await GetAsync(id);
 		return entity is null ? throw new Exception("Entity Not Found") : entity;
 	}
 
 	public bool Update(T entity)
 	{
-		_set.Update(entity);
+		_ = _set.Update(entity);
 		return true;
 	}
 }

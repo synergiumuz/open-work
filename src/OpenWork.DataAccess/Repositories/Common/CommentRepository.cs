@@ -19,6 +19,6 @@ public class CommentRepository : BasicRepository<Comment>, ICommentRepository
 
 	public IQueryable<Comment> GetByWorker(long workerId)
 	{
-		return _set.Where(x=> x.WorkerId == workerId);
+		return _set.Where(x => x.WorkerId == workerId);
 	}
 }

@@ -1,13 +1,6 @@
-﻿using OpenWork.Domain.Entities;
+﻿using System.ComponentModel.DataAnnotations;
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OpenWork.Services.Dtos.Admin;
+namespace OpenWork.Services.Dtos.Admins;
 public class SkillCreateDto
 {
 	[Required(ErrorMessage = "Enter name of skill")]

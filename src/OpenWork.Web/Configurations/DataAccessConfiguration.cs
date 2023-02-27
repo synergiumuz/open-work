@@ -14,10 +14,10 @@ public static class DataAccessConfiguration
 	public static void ConfigureDataAccess(this WebApplicationBuilder builder)
 	{
 		string config = builder.Configuration.GetConnectionString("ElephantSQL");
-		builder.Services.AddDbContext<AppDbContext>(opt =>
+		_ = builder.Services.AddDbContext<AppDbContext>(opt =>
 		{
-			opt.UseNpgsql(config);
+			_ = opt.UseNpgsql(config);
 		});
-		builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+		_ = builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 	}
 }

@@ -17,6 +17,7 @@ public class UserService : IUserService
 	private readonly IHasher _hasher;
 	private readonly IAuthManager _auth;
 
+
 	public UserService(IUnitOfWork repository, IIdentityService identity, IHasher hasher, IAuthManager auth)
 	{
 		_repository = repository;

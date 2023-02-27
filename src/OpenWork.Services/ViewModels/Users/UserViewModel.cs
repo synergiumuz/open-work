@@ -12,7 +12,7 @@ public class UserViewModel : BaseEntity
 		return new UserViewModel()
 		{
 			Id = entity.Id,
-			Email = entity.Email,
+			Email = entity.Email
 		};
 	}
 }

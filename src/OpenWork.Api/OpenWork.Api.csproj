@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\OpenWork.Services\OpenWork.Services.csproj" />
+    <ProjectReference Include="..\OpenWork.Services\OpenWork.Services.csproj" />
   </ItemGroup>
 
 </Project>

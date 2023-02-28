@@ -22,8 +22,4 @@
     <ProjectReference Include="..\OpenWork.Services\OpenWork.Services.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Areas\Administrator\Views\Accounts\" />
-  </ItemGroup>
-
 </Project>

@@ -9,7 +9,7 @@ using OpenWork.Services.Services;
 using OpenWork.Services.Services.Common;
 using OpenWork.Services.Services.Security;
 
-namespace OpenWork.Web.Configurations;
+namespace OpenWork.Api.Configurations;
 
 public static class ServiceConfiguration
 {

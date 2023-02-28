@@ -1,4 +1,4 @@
-namespace OpenWork.Web.Models
+namespace OpenWork.Api.Models
 {
 	public class ErrorViewModel
 	{

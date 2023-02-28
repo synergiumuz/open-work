@@ -22,7 +22,7 @@ public class Worker : Auditable
 
 	public DateTime LastSeen { get; set; }
 
-	public string Image { get; set; }
+	public string Image { get; set; } = string.Empty;
 
 	public virtual IList<Busyness> Businesses { get; set; } = new List<Busyness>();
 	public virtual IList<Skill> Spheres { get; set; } = new List<Skill>();

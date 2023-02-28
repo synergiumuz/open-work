@@ -10,7 +10,7 @@ using OpenWork.Services.Interfaces;
 namespace OpenWork.Api.Controllers
 {
 	[Route("users")]
-
+	[ApiController]
 	public class UsersController : Controller
 	{
 		private readonly IUserService _userService;
@@ -31,6 +31,18 @@ namespace OpenWork.Api.Controllers
 		public async Task<IActionResult> LoginAsync([FromForm] UserLoginDto dto)
 		{
 			return Ok(await _userService.LoginAsync(dto));
+		}
+
+		[HttpDelete]
+		public async Task<IActionResult> DeleteAsync()
+		{
+			return Ok(await _userService.DeleteAsync());
+		}
+
+		[HttpPut("update")]
+		public async Task<IActionResult> UpdateAsync([FromForm] UserRegisterDto dto)
+		{
+			return Ok(await _userService.UpdateAsync(dto));
 		}
 	}
 }

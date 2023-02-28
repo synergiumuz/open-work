@@ -24,7 +24,7 @@ public class AuthManager : IAuthManager
 		{
 			new Claim("Id", user.Id.ToString()),
 			new Claim("Email", user.Email),
-			new Claim(ClaimTypes.Role, "user")
+			new Claim(ClaimTypes.Role, user.Admin?"Admin":"User")
 		};
 
 		SymmetricSecurityKey securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["SecretKey"]));
@@ -42,7 +42,7 @@ public class AuthManager : IAuthManager
 		{
 			new Claim("Id", worker.Id.ToString()),
 			new Claim("Email", worker.Email),
-			new Claim(ClaimTypes.Role, "worker")
+			new Claim(ClaimTypes.Role, "Worker")
 		};
 
 		SymmetricSecurityKey securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["SecretKey"]));

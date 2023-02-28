@@ -22,6 +22,8 @@ public class Worker : Auditable
 
 	public DateTime LastSeen { get; set; }
 
+	public string Image { get; set; }
+
 	public virtual IList<Busyness> Businesses { get; set; } = new List<Busyness>();
 	public virtual IList<Skill> Spheres { get; set; } = new List<Skill>();
 	public virtual IList<Comment> Comments { get; set; } = new List<Comment>();

@@ -1,38 +1,37 @@
 ﻿using Microsoft.OpenApi.Models;
 
-namespace OpenWork.Api.Configurations
-{
-	public static class SwaggerAuthConfiguration
-	{
-		public static void ConfigureSwaggerAuthorize(this IServiceCollection services)
-		{
-			_ = services.AddSwaggerGen(c =>
-			{
-				c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-				{
-					Name = "Authorization",
-					Description =
-						"JWT Authorization header using the Bearer scheme. " +
-						"Example: \"Authorization: Bearer {token}\"",
-					In = ParameterLocation.Header,
-					Type = SecuritySchemeType.ApiKey
-				});
+namespace OpenWork.Api.Configurations;
 
-				c.AddSecurityRequirement(new OpenApiSecurityRequirement
+public static class SwaggerAuthConfiguration
+{
+	public static void ConfigureSwaggerAuthorize(this IServiceCollection services)
+	{
+		_ = services.AddSwaggerGen(c =>
+		{
+			c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
 			{
+				Name = "Authorization",
+				Description =
+					"JWT Authorization header using the Bearer scheme. " +
+					"Example: \"Authorization: Bearer {token}\"",
+				In = ParameterLocation.Header,
+				Type = SecuritySchemeType.ApiKey
+			});
+
+			c.AddSecurityRequirement(new OpenApiSecurityRequirement
+		{
+			{
+				new OpenApiSecurityScheme
 				{
-					new OpenApiSecurityScheme
+					Reference = new OpenApiReference
 					{
-						Reference = new OpenApiReference
-						{
-							Type = ReferenceType.SecurityScheme,
-							Id = "Bearer"
-						}
-					},
-					new string[] { }
-				}
-			});
-			});
-		}
+						Type = ReferenceType.SecurityScheme,
+						Id = "Bearer"
+					}
+				},
+				new string[] { }
+			}
+		});
+		});
 	}
 }

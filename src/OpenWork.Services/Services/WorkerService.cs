@@ -36,7 +36,7 @@ public class WorkerService : IWorkerService
 		Worker entity = await _repository.Workers.GetAsync(dto.Email);
 		if(entity is null)
 			throw new Exception("Worker not found");
-		if(_hasher.Verify(entity.Password, dto.Password, entity.Email))
+		if(!_hasher.Verify(entity.Password, dto.Password, entity.Email))
 			throw new Exception("Invalid password");
 		return _auth.GenerateToken(entity);
 	}

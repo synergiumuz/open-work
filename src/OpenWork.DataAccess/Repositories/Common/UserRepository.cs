@@ -18,7 +18,6 @@ public class UserRepository : BasicRepository<User>, IUserRepository
 
 	public async Task<User> GetAsync(string email)
 	{
-		User? entity = await _set.FirstOrDefaultAsync(x => x.Email == email);
-		return entity is null ? throw new Exception("User not found") : entity;
+		return await _set.FirstOrDefaultAsync(x => x.Email == email);
 	}
 }

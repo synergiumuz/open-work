@@ -17,7 +17,6 @@ public class WorkerRepository : BasicRepository<Worker>, IWorkerRepository
 
 	public async Task<Worker> GetAsync(string email)
 	{
-		Worker? entity = await _set.FirstOrDefaultAsync(x => x.Email == email);
-		return entity is null ? throw new Exception("Worker not found") : entity;
+		return await _set.FirstOrDefaultAsync(x => x.Email == email);
 	}
 }

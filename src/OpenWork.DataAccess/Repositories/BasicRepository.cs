@@ -38,8 +38,7 @@ public class BasicRepository<T> : IBasicRepository<T> where T : BaseEntity
 
 	public async Task<T> GetAsync(long id)
 	{
-		T? entity = await GetAsync(id);
-		return entity is null ? throw new Exception("Entity Not Found") : entity;
+		return await _set.FindAsync(id);
 	}
 
 	public bool Update(T entity)

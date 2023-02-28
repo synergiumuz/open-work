@@ -44,6 +44,12 @@ public class UserService : IUserService
 
 	public async Task<bool> RegisterAsync(UserRegisterDto dto)
 	{
+		User result = await _repository.Users.GetAsync(dto.Email);
+		if(result is not null)
+			if(result.Banned)
+				throw new Exception("Banned");
+			else
+				throw new Exception("Already exists");
 		User entity = dto;
 		entity.Password = _hasher.Hash(dto.Password, dto.Email);
 		_ = _repository.Users.Add(entity);

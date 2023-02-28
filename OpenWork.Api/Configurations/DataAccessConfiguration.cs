@@ -1,13 +1,10 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.EntityFrameworkCore;
 
 using OpenWork.DataAccess.DbContexts;
 using OpenWork.DataAccess.Interfaces;
 using OpenWork.DataAccess.Repositories;
 
-namespace OpenWork.Web.Configurations;
+namespace OpenWork.Api.Configurations;
 
 public static class DataAccessConfiguration
 {

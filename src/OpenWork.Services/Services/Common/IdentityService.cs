@@ -20,7 +20,7 @@ namespace OpenWork.Services.Services.Common
 		{
 			get
 			{
-				var result = _accessor.HttpContext!.User.FindFirst("Id");
+				var result = _accessor.HttpContext.User.FindFirst("Id");
 				return result is not null ? long.Parse(result.Value) : throw new Exception("Unauthorized");
 			}
 		}

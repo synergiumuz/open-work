@@ -6,7 +6,7 @@ namespace OpenWork.Api.Configurations
 {
 	public static class JwtConfiguration
 	{
-		public static void ConfigurAuth(this WebApplicationBuilder builder)
+		public static void ConfigureAuth(this WebApplicationBuilder builder)
 		{
 			Microsoft.Extensions.Configuration.IConfigurationSection config = builder.Configuration.GetSection("Jwt");
 			_ = builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

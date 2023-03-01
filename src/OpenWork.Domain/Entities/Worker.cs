@@ -24,7 +24,7 @@ public class Worker : Auditable
 
 	public string Image { get; set; } = string.Empty;
 
-	public virtual IList<Busyness> Businesses { get; set; } = new List<Busyness>();
-	public virtual IList<Skill> Spheres { get; set; } = new List<Skill>();
+	public virtual IList<Busyness> Busynesses { get; set; } = new List<Busyness>();
+	public virtual IList<Skill> Skills { get; set; } = new List<Skill>();
 	public virtual IList<Comment> Comments { get; set; } = new List<Comment>();
 }

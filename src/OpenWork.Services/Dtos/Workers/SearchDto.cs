@@ -5,7 +5,7 @@ namespace OpenWork.Services.Dtos.Workers;
 
 public class SearchDto
 {
-	public IEnumerable<Skill> AllowedSkills { get; set; } = new List<Skill>();
+	public IEnumerable<long> AllowedSkillsId { get; set; } = new List<long>();
 
 	public SortOptions SortOptions { get; set; }
 }

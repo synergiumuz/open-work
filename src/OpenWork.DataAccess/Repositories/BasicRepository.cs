@@ -12,11 +12,13 @@ namespace OpenWork.DataAccess.Repositories;
 
 public class BasicRepository<T> : IBasicRepository<T> where T : BaseEntity
 {
+	protected readonly AppDbContext _context;
 	protected readonly DbSet<T> _set;
 
 	public BasicRepository(AppDbContext context)
 	{
 		_set = context.Set<T>();
+		_context = context;
 	}
 
 	public bool Add(T entity)
@@ -31,12 +33,12 @@ public class BasicRepository<T> : IBasicRepository<T> where T : BaseEntity
 		return true;
 	}
 
-	public IQueryable<T> GetAll()
+	public virtual IQueryable<T> GetAll()
 	{
 		return _set.AsQueryable();
 	}
 
-	public async Task<T> GetAsync(long id)
+	public virtual async Task<T> GetAsync(long id)
 	{
 		return await _set.FindAsync(id);
 	}

@@ -25,6 +25,7 @@ public static class ServiceConfiguration
 		_ = services.AddScoped<IAuthManager, AuthManager>();
 		_ = services.AddScoped<IWorkerService, WorkerService>();
 		_ = services.AddScoped<IIdentityService, IdentityService>();
-			
+		_ = services.AddScoped<IPaginator, Paginator>();
+
 	}
 }

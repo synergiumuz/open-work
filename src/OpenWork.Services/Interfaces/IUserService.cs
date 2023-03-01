@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 using OpenWork.Services.Dtos.Users;
 using OpenWork.Services.ViewModels.Users;
@@ -18,4 +19,6 @@ public interface IUserService
 	public Task<UserBaseViewModel> GetBaseAsync(long id);
 
 	public Task<UserViewModel> GetAsync(long id);
+
+	public Task<IEnumerable<UserBaseViewModel>> GetAllAsync(int page);
 }

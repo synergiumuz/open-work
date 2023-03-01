@@ -1,12 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+
+using Microsoft.EntityFrameworkCore;
 
 using OpenWork.DataAccess.Interfaces;
 using OpenWork.Domain.Entities;
+using OpenWork.Services.Common.Pagination;
 using OpenWork.Services.Dtos.Workers;
 using OpenWork.Services.Interfaces;
 using OpenWork.Services.Interfaces.Common;
 using OpenWork.Services.Interfaces.Security;
+using OpenWork.Services.ViewModels.Workers;
 
 namespace OpenWork.Services.Services;
 
@@ -16,19 +22,73 @@ public class WorkerService : IWorkerService
 	private readonly IHasher _hasher;
 	private readonly IAuthManager _auth;
 	private readonly IIdentityService _identity;
+	private readonly IPaginator _paginator;
+	private int _pageSize = 20;
 
-	public WorkerService(IUnitOfWork repository, IHasher hasher, IAuthManager auth, IIdentityService identity)
+	public WorkerService(IUnitOfWork repository, IHasher hasher, IAuthManager auth, IIdentityService identity, IPaginator paginator)
 	{
 		_repository = repository;
 		_hasher = hasher;
 		_auth = auth;
 		_identity = identity;
+		_paginator = paginator;
 	}
 
 	public async Task<bool> DeleteAsync()
 	{
 		_ = await _repository.Workers.DeleteAsync(_identity.Id);
 		return await _repository.SaveChangesAsync() > 0;
+	}
+
+	public async Task<IEnumerable<WorkerBaseViewModel>> Get(SearchDto dto, int page)
+	{
+		return (await
+			_paginator.PaginateAsync(
+				_repository.Workers.GetAll().Where(
+					wrk => wrk.Skills.Any(
+						skl => dto.AllowedSkillsId.Any(id => id == skl.Id)
+					)
+				)
+			, new PaginationParams(_pageSize, page))).Select(
+				wrk => new WorkerBaseViewModel
+				{
+					Id = wrk.Id,
+					Surname = wrk.Surname,
+					LastSeen = wrk.LastSeen,
+					Name = wrk.Name,
+					Rating = wrk.Comments.Average(x => x.Satisfied ? 1 : 0) * 5
+				}
+			);
+	}
+
+	public async Task<WorkerViewModel> GetAsync(long id)
+	{
+		Worker entity = await _repository.Workers.GetAsync(id);
+		return new WorkerViewModel
+		{
+			Skills = entity.Skills,
+			Surname = entity.Surname,
+			LastSeen = entity.LastSeen,
+			Comments = entity.Comments,
+			Email = entity.Email,
+			Id = entity.Id,
+			Name = entity.Name,
+			Phone = entity.Phone,
+			Rating = entity.Comments.Average(x => x.Satisfied ? 1 : 0) * 5
+		};
+	}
+
+	public async Task<WorkerBaseViewModel> GetBaseAsync(long id)
+	{
+		Worker entity = await _repository.Workers.GetAsync(id);
+		return new WorkerBaseViewModel
+		{
+			Id = entity.Id,
+			Surname = entity.Surname,
+			LastSeen = entity.LastSeen,
+			Name = entity.Name,
+			Rating = entity.Comments.Average(x => x.Satisfied ? 1 : 0) * 5
+		};
 	}
 
 	public async Task<string> LoginAsync(WorkerLoginDto dto)

@@ -17,6 +17,12 @@ public class WorkerRepository : BasicRepository<Worker>, IWorkerRepository
 
 	public async Task<Worker> GetAsync(string email)
 	{
-		return await _set.FirstOrDefaultAsync(x => x.Email == email);
+		Worker result = await _set.FirstOrDefaultAsync(x => x.Email == email);
+		if(result is not null)
+		{
+			await _context.Entry(result).Collection(x => x.Comments).LoadAsync();
+			await _context.Entry(result).Collection(x => x.Busynesses).LoadAsync();
+		}
+		return result;
 	}
 }

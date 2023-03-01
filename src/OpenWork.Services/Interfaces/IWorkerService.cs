@@ -1,6 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 using OpenWork.Services.Dtos.Workers;
+using OpenWork.Services.ViewModels.Users;
+using OpenWork.Services.ViewModels.Workers;
 
 namespace OpenWork.Services.Interfaces;
 
@@ -13,4 +17,10 @@ public interface IWorkerService
 	public Task<bool> UpdateAsync(WorkerRegisterDto dto);
 
 	public Task<bool> DeleteAsync();
+
+	public Task<WorkerBaseViewModel> GetBaseAsync(long id);
+
+	public Task<WorkerViewModel> GetAsync(long id);
+
+	public Task<IEnumerable<WorkerBaseViewModel>> Get(SearchDto dto);
 }

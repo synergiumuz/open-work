@@ -13,7 +13,7 @@ public class WorkerBaseViewModel : BaseEntity
 
 	public DateTime LastSeen { get; set; }
 
-	public double Rating { get; set; }
+	public double? Rating { get; set; }
 
 	public static implicit operator WorkerBaseViewModel(Worker entity)
 	{

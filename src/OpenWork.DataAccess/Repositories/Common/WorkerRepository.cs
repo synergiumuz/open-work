@@ -1,5 +1,7 @@
-﻿using System;
+﻿using System.Security.Cryptography.X509Certificates;
+using System;
 using System.Threading.Tasks;
+using System.Linq;
 
 using Microsoft.EntityFrameworkCore;
 
@@ -25,4 +27,15 @@ public class WorkerRepository : BasicRepository<Worker>, IWorkerRepository
 		}
 		return result;
 	}
+    override public async Task<Worker> GetAsync(long id){
+        Worker result = await _set.FindAsync(id);
+        if(result is not null){
+            await _context.Entry(result).Collection(x => x.Comments).LoadAsync();
+			await _context.Entry(result).Collection(x => x.Busynesses).LoadAsync();
+        }
+        return result;
+    }
+    override public IQueryable<Worker> GetAll(){
+        return base.GetAll().Include(x=>x.Comments).Include(x=>x.Busynesses).AsNoTracking();
+    }
 }

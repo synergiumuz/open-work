@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OpenWork.Services.Common.Pagination;
+namespace OpenWork.Services.Common.Utils;
 
 public class PaginationParams
 {

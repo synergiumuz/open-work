@@ -118,4 +118,20 @@ public class WorkerService : IWorkerService
 		_ = _repository.Workers.Update(entity);
 		return await _repository.SaveChangesAsync() > 0;
 	}
+
+    public async Task<IEnumerable<WorkerBaseViewModel>> GetAll(int page){
+        return (await
+			_paginator.PaginateAsync(
+				_repository.Workers.GetAll()
+			, new PaginationParams(_pageSize, page))).Select(
+				wrk => new WorkerBaseViewModel
+				{
+					Id = wrk.Id,
+					Surname = wrk.Surname,
+					LastSeen = wrk.LastSeen,
+					Name = wrk.Name,
+					Rating = wrk.Comments.Average(x => x.Satisfied ? 1 : 0) * 5
+				}
+			);
+    }
 }

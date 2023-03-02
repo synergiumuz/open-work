@@ -1,6 +1,7 @@
 ﻿using System.Security.Cryptography.X509Certificates;
 using System;
 using System.Threading.Tasks;
+using System.Linq;
 
 using Microsoft.EntityFrameworkCore;
 
@@ -24,7 +25,7 @@ public class WorkerRepository : BasicRepository<Worker>, IWorkerRepository
 			await _context.Entry(result).Collection(x => x.Comments).LoadAsync();
 			await _context.Entry(result).Collection(x => x.Busynesses).LoadAsync();
 		}
-		return result.AsNoTracking();
+		return result;
 	}
     public async Task<Worker> GetAsync(long id){
         Worker result = await _set.FindAsync(id);
@@ -32,9 +33,9 @@ public class WorkerRepository : BasicRepository<Worker>, IWorkerRepository
             await _context.Entry(result).Collection(x => x.Comments).LoadAsync();
 			await _context.Entry(result).Collection(x => x.Busynesses).LoadAsync();
         }
-        return result.AsNoTracking();
+        return result;
     }
-    public async IQueryable<Worker> GetAll(){
+    public IQueryable<Worker> GetAll(){
         return base.GetAll().Include(x=>x.Comments).Include(x=>x.Busynesses).AsNoTracking();
     }
 }

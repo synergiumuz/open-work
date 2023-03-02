@@ -27,7 +27,7 @@ public class WorkerRepository : BasicRepository<Worker>, IWorkerRepository
 		}
 		return result;
 	}
-    public async Task<Worker> GetAsync(long id){
+    override public async Task<Worker> GetAsync(long id){
         Worker result = await _set.FindAsync(id);
         if(result is not null){
             await _context.Entry(result).Collection(x => x.Comments).LoadAsync();
@@ -35,7 +35,7 @@ public class WorkerRepository : BasicRepository<Worker>, IWorkerRepository
         }
         return result;
     }
-    public IQueryable<Worker> GetAll(){
+    override public IQueryable<Worker> GetAll(){
         return base.GetAll().Include(x=>x.Comments).Include(x=>x.Busynesses).AsNoTracking();
     }
 }

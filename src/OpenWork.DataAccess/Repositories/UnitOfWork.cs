@@ -15,7 +15,7 @@ public class UnitOfWork : IUnitOfWork
 	{
 		_context = context;
 		Users = new UserRepository(_context);
-		Businesses = new BusinessRepository(_context);
+		Businesses = new BusynessRepository(_context);
 		Categories = new CategoryRepository(_context);
 		Comments = new CommentRepository(_context);
 		Spheres = new SkillRepository(_context);

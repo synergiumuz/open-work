@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-using Microsoft.EntityFrameworkCore;
-
 using OpenWork.DataAccess.Interfaces;
 using OpenWork.Domain.Entities;
 using OpenWork.Services.Common.Pagination;
@@ -40,7 +38,7 @@ public class WorkerService : IWorkerService
 		return await _repository.SaveChangesAsync() > 0;
 	}
 
-	public async Task<IEnumerable<WorkerBaseViewModel>> Get(SearchDto dto, int page)
+	public async Task<IEnumerable<WorkerBaseViewModel>> SearchAsync(SearchDto dto, int page)
 	{
 		return (await
 			_paginator.PaginateAsync(
@@ -118,8 +116,9 @@ public class WorkerService : IWorkerService
 		return await _repository.SaveChangesAsync() > 0;
 	}
 
-    public async Task<IEnumerable<WorkerBaseViewModel>> GetAll(int page){
-        return (await
+	public async Task<IEnumerable<WorkerBaseViewModel>> GetAllAsync(int page)
+	{
+		return (await
 			_paginator.PaginateAsync(
 				_repository.Workers.GetAll()
 			, new PaginationParams(_pageSize, page))).Select(
@@ -132,5 +131,5 @@ public class WorkerService : IWorkerService
 					Rating = wrk.Comments.Average(x => x.Satisfied ? 1 : 0) * 5
 				}
 			);
-    }
+	}
 }

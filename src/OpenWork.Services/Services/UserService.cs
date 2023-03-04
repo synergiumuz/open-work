@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 using OpenWork.DataAccess.Interfaces;
 using OpenWork.Domain.Entities;
-using OpenWork.Services.Common.Pagination;
+using OpenWork.Services.Common.Utils;
 using OpenWork.Services.Dtos.Users;
 using OpenWork.Services.Interfaces;
 using OpenWork.Services.Interfaces.Common;
@@ -20,11 +20,11 @@ public class UserService : IUserService
 	private readonly IIdentityService _identity;
 	private readonly IHasher _hasher;
 	private readonly IAuthManager _auth;
-	private readonly IPaginator _paginator;
+	private readonly IPaginatorService _paginator;
 	private readonly int _pageSize = 20;
 
 
-	public UserService(IUnitOfWork repository, IIdentityService identity, IHasher hasher, IAuthManager auth, IPaginator paginator)
+	public UserService(IUnitOfWork repository, IIdentityService identity, IHasher hasher, IAuthManager auth, IPaginatorService paginator)
 	{
 		_repository = repository;
 		_identity = identity;

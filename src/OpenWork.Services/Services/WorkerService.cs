@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using OpenWork.DataAccess.Interfaces;
 using OpenWork.Domain.Entities;
-using OpenWork.Services.Common.Pagination;
+using OpenWork.Services.Common.Utils;
 using OpenWork.Services.Dtos.Workers;
 using OpenWork.Services.Interfaces;
 using OpenWork.Services.Interfaces.Common;
@@ -20,10 +21,10 @@ public class WorkerService : IWorkerService
 	private readonly IHasher _hasher;
 	private readonly IAuthManager _auth;
 	private readonly IIdentityService _identity;
-	private readonly IPaginator _paginator;
+	private readonly IPaginatorService _paginator;
 	private int _pageSize = 20;
 
-	public WorkerService(IUnitOfWork repository, IHasher hasher, IAuthManager auth, IIdentityService identity, IPaginator paginator)
+	public WorkerService(IUnitOfWork repository, IHasher hasher, IAuthManager auth, IIdentityService identity, IPaginatorService paginator)
 	{
 		_repository = repository;
 		_hasher = hasher;
@@ -62,6 +63,7 @@ public class WorkerService : IWorkerService
 	public async Task<WorkerViewModel> GetAsync(long id)
 	{
 		Worker entity = await _repository.Workers.GetAsync(id);
+		if (entity is null) throw new Exception("Worker not found");
 		return new WorkerViewModel
 		{
 			Skills = entity.Skills,
@@ -72,7 +74,7 @@ public class WorkerService : IWorkerService
 			Id = entity.Id,
 			Name = entity.Name,
 			Phone = entity.Phone,
-			Rating = entity.Comments.Average(x => x.Satisfied ? 1 : 0) * 5
+			Rating = entity.Comments.IsNullOrEmpty()? null: entity.Comments.Average(x => x.Satisfied ? (double)1 : (double)0) * 5
 		};
 	}
 

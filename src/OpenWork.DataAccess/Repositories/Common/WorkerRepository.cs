@@ -1,13 +1,11 @@
-﻿using System.Security.Cryptography.X509Certificates;
-using System;
-using System.Threading.Tasks;
-using System.Linq;
+﻿
 
 using Microsoft.EntityFrameworkCore;
-
 using OpenWork.DataAccess.DbContexts;
 using OpenWork.DataAccess.Interfaces.Common;
 using OpenWork.Domain.Entities;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace OpenWork.DataAccess.Repositories.Common;
 

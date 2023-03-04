@@ -1,11 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using OpenWork.Services.Common.Utils;
-using OpenWork.Services.Dtos.Users;
+
 using OpenWork.Services.Dtos.Workers;
 using OpenWork.Services.Interfaces;
-using OpenWork.Services.Services;
 
 namespace OpenWork.Api.Controllers
 {
@@ -21,8 +18,8 @@ namespace OpenWork.Api.Controllers
 
 		//so'ra??
 		[HttpPost("search")]
-		public async Task<IActionResult> SearchAsync(SearchDto dto,[FromQuery] int page = 1)
-			=> Ok(await _workerService.SearchAsync(dto,page));
+		public async Task<IActionResult> SearchAsync(SearchDto dto, [FromQuery] int page = 1)
+			=> Ok(await _workerService.SearchAsync(dto, page));
 
 		[HttpGet("get/{id}")]
 		public async Task<IActionResult> GetAsync(long id)

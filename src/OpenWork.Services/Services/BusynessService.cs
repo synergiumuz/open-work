@@ -47,7 +47,7 @@ public class BusynessService : IBusynessService
 
 	public Task<IEnumerable<Busyness>> GetAllAsync(long workerId, int page)
 	{
-		return _paginator.PaginateAsync(_repository.Busynesses.GetAll(), new PaginationParams(_pageSize, page));
+		return _paginator.PaginateAsync(_repository.Busynesses.GetAll().Where(x => x.WorkerId == workerId), new PaginationParams(_pageSize, page));
 	}
 
 	public Task<IEnumerable<Busyness>> SearchAsync(BusynessSearchDto dto, int page)

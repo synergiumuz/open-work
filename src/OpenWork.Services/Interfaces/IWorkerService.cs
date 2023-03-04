@@ -22,5 +22,7 @@ public interface IWorkerService
 
 	public Task<WorkerViewModel> GetAsync(long id);
 
-	public Task<IEnumerable<WorkerBaseViewModel>> Get(SearchDto dto, int page);
+	public Task<IEnumerable<WorkerBaseViewModel>> SearchAsync(SearchDto dto, int page);
+
+	public Task<IEnumerable<WorkerBaseViewModel>> GetAllAsync(int page);
 }

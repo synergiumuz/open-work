@@ -22,7 +22,7 @@ namespace OpenWork.Api.Controllers
 		//so'ra??
 		[HttpPost("search")]
 		public async Task<IActionResult> SearchAsync(SearchDto dto,[FromQuery] int page = 1)
-			=> Ok(await _workerService.Get(dto,page));
+			=> Ok(await _workerService.SearchAsync(dto,page));
 
 		[HttpGet("get/{id}")]
 		public async Task<IActionResult> GetAsync(long id)

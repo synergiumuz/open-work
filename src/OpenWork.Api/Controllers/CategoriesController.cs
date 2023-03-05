@@ -45,7 +45,7 @@ public class CategoriesController : Controller
 	}
 
 	[HttpPut]
-	public async Task<IActionResult> UpdateAsync(CategoryCreateDto dto)
+	public async Task<IActionResult> UpdateAsync([FromForm] CategoryCreateDto dto)
 	{
 		return Ok(await _service.UpdateAsync(dto));
 	}

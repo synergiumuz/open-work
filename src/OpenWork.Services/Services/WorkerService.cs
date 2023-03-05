@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+
 using Microsoft.IdentityModel.Tokens;
+
 using OpenWork.DataAccess.Interfaces;
 using OpenWork.Domain.Entities;
 using OpenWork.Services.Common.Utils;
@@ -63,7 +64,8 @@ public class WorkerService : IWorkerService
 	public async Task<WorkerViewModel> GetAsync(long id)
 	{
 		Worker entity = await _repository.Workers.GetAsync(id);
-		if (entity is null) throw new Exception("Worker not found");
+		if(entity is null)
+			throw new Exception("Worker not found");
 		return new WorkerViewModel
 		{
 			Skills = entity.Skills,
@@ -74,7 +76,7 @@ public class WorkerService : IWorkerService
 			Id = entity.Id,
 			Name = entity.Name,
 			Phone = entity.Phone,
-			Rating = entity.Comments.IsNullOrEmpty()? null: entity.Comments.Average(x => x.Satisfied ? (double)1 : (double)0) * 5
+			Rating = entity.Comments.IsNullOrEmpty() ? null : entity.Comments.Average(x => x.Satisfied ? 1 : (double)0) * 5
 		};
 	}
 

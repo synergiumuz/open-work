@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Diagnostics;
+
+using Microsoft.AspNetCore.Mvc;
+
 using OpenWork.Api.Models;
-using System.Diagnostics;
 
 namespace OpenWork.Api.Controllers
 {

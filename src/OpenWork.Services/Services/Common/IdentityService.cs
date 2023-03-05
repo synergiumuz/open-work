@@ -1,10 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System;
+
+using Microsoft.AspNetCore.Http;
+
 using OpenWork.Services.Interfaces.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OpenWork.Services.Services.Common
 {
@@ -14,13 +12,13 @@ namespace OpenWork.Services.Services.Common
 
 		public IdentityService(IHttpContextAccessor accessor)
 		{
-			this._accessor = accessor;
+			_accessor = accessor;
 		}
 		public long Id
 		{
 			get
 			{
-				var result = _accessor.HttpContext.User.FindFirst("Id");
+				System.Security.Claims.Claim? result = _accessor.HttpContext.User.FindFirst("Id");
 				return result is not null ? long.Parse(result.Value) : throw new Exception("Unauthorized");
 			}
 		}
@@ -28,7 +26,7 @@ namespace OpenWork.Services.Services.Common
 		{
 			get
 			{
-				var result = _accessor.HttpContext!.User.FindFirst("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress");
+				System.Security.Claims.Claim? result = _accessor.HttpContext!.User.FindFirst("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress");
 				return result is null ? string.Empty : result.Value;
 			}
 		}

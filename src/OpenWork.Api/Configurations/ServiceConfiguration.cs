@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-
-using OpenWork.DataAccess.Interfaces;
+﻿using OpenWork.DataAccess.Interfaces;
 using OpenWork.DataAccess.Repositories;
 using OpenWork.Services.Interfaces;
 using OpenWork.Services.Interfaces.Common;

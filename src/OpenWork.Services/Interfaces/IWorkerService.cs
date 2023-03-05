@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
 using OpenWork.Services.Dtos.Workers;
-using OpenWork.Services.ViewModels.Users;
 using OpenWork.Services.ViewModels.Workers;
 
 namespace OpenWork.Services.Interfaces;

@@ -10,6 +10,6 @@ public interface IBusynessService
 {
 	public Task<bool> CreateAsync(BusynessCreateDto dto);
 	public Task<bool> DeleteAsync(long id);
-	public Task<IEnumerable<Busyness>> GetAllAsync(int page);
+	public Task<IEnumerable<Busyness>> GetAllAsync(long workerId, int page);
 	public Task<IEnumerable<Busyness>> SearchAsync(BusynessSearchDto dto, int page);
 }

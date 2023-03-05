@@ -1,5 +1,4 @@
-﻿using OpenWork.Domain.Common;
-using OpenWork.Domain.Entities;
+﻿using OpenWork.Domain.Entities;
 
 namespace OpenWork.Services.ViewModels.Users;
 

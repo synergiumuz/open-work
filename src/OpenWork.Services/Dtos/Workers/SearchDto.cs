@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-
-using OpenWork.Domain.Entities;
 namespace OpenWork.Services.Dtos.Workers;
 
 public class SearchDto

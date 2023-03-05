@@ -15,20 +15,20 @@ public class UnitOfWork : IUnitOfWork
 	{
 		_context = context;
 		Users = new UserRepository(_context);
-		Businesses = new BusynessRepository(_context);
+		Busynesses = new BusynessRepository(_context);
 		Categories = new CategoryRepository(_context);
 		Comments = new CommentRepository(_context);
-		Spheres = new SkillRepository(_context);
+		Skills = new SkillRepository(_context);
 		Workers = new WorkerRepository(_context);
 	}
 
-	public IBusinessRepository Businesses { get; }
+	public IBusynessRepository Busynesses { get; }
 
 	public ICategoryRepository Categories { get; }
 
 	public ICommentRepository Comments { get; }
 
-	public ISkillRepository Spheres { get; }
+	public ISkillRepository Skills { get; }
 
 	public IUserRepository Users { get; }
 

@@ -9,7 +9,7 @@ using OpenWork.Domain.Entities;
 
 namespace OpenWork.DataAccess.Repositories.Common;
 
-public class BusynessRepository : BasicRepository<Busyness>, IBusinessRepository
+public class BusynessRepository : BasicRepository<Busyness>, IBusynessRepository
 {
 	public BusynessRepository(AppDbContext context) : base(context)
 	{

@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
 
 using OpenWork.Domain.Entities;
 
@@ -8,4 +9,5 @@ public interface ICommentRepository : IBasicRepository<Comment>
 {
 	public IQueryable<Comment> GetByUser(long userId);
 	public IQueryable<Comment> GetByWorker(long workerId);
+	public Task<Comment> GetAsync(long userId, long workerId);
 }

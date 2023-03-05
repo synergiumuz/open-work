@@ -38,4 +38,9 @@ public class CommentRepository : BasicRepository<Comment>, ICommentRepository
 		}
 		return result;
 	}
+
+	public async Task<Comment> GetAsync(long userId, long workerId)
+	{
+		return await _set.FirstOrDefaultAsync(x => x.UserId == userId && x.WorkerId == workerId);
+	}
 }

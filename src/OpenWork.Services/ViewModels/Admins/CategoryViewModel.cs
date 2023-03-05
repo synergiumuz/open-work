@@ -8,6 +8,8 @@ namespace OpenWork.Services.ViewModels.Admins;
 
 public class CategoryViewModel : BaseEntity
 {
+	public string Name { get; set; } = string.Empty;
+
 	public List<Skill> Skills { get; set; } = new List<Skill>();
 
 	public static implicit operator CategoryViewModel(Category entity)
@@ -16,6 +18,7 @@ public class CategoryViewModel : BaseEntity
 		{
 			Id = entity.Id,
 			Skills = entity.Skills.ToList(),
+			Name = entity.Name,
 		};
 	}
 }

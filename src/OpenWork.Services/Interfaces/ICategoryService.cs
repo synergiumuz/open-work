@@ -10,7 +10,7 @@ namespace OpenWork.Services.Interfaces
 {
 	public interface ICategoryService
 	{
-		public Task<bool> UpdateAsync(CategoryCreateDto dto);
+		public Task<bool> UpdateAsync(long id, CategoryCreateDto dto);
 
 		public Task<bool> DeleteAsync(long id);
 

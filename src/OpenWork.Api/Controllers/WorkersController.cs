@@ -16,12 +16,11 @@ namespace OpenWork.Api.Controllers
 			_workerService = workerService;
 		}
 
-		//so'ra??
 		[HttpPost("search")]
 		public async Task<IActionResult> SearchAsync(SearchDto dto, [FromQuery] int page = 1)
 			=> Ok(await _workerService.SearchAsync(dto, page));
 
-		[HttpGet("get/{id}")]
+		[HttpGet("{id}")]
 		public async Task<IActionResult> GetAsync(long id)
 			=> Ok(await _workerService.GetAsync(id));
 

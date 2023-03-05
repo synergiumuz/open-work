@@ -6,7 +6,7 @@ using OpenWork.Services.Interfaces;
 
 namespace OpenWork.Api.Controllers;
 [ApiController]
-[Route("Busynesses")]
+[Route("busynesses")]
 [Authorize(Roles = "Worker")]
 public class BusynessesController : Controller
 {

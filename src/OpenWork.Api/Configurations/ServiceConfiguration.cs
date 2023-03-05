@@ -24,6 +24,11 @@ public static class ServiceConfiguration
 		_ = services.AddScoped<IWorkerService, WorkerService>();
 		_ = services.AddScoped<IIdentityService, IdentityService>();
 		_ = services.AddScoped<IPaginatorService, PaginatorService>();
+		_ = services.AddScoped<ICategoryService, CategoryService>();
+		_ = services.AddScoped<ISkillService, SkillService>();
+		_ = services.AddScoped<ICommentService, CommentService>();
+		_ = services.AddScoped<IBusynessService, BusynessService>();
+
 
 	}
 }

@@ -4,46 +4,46 @@
 
 namespace OpenWork.DataAccess.Migrations
 {
-    public partial class ElseNaming : Migration
-    {
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropForeignKey(
-                name: "FK_SkillWorker_Spheres_SpheresId",
-                table: "SkillWorker");
+	public partial class ElseNaming : Migration
+	{
+		protected override void Up(MigrationBuilder migrationBuilder)
+		{
+			_ = migrationBuilder.DropForeignKey(
+				name: "FK_SkillWorker_Spheres_SpheresId",
+				table: "SkillWorker");
 
-            migrationBuilder.RenameColumn(
-                name: "SpheresId",
-                table: "SkillWorker",
-                newName: "SkillsId");
+			_ = migrationBuilder.RenameColumn(
+				name: "SpheresId",
+				table: "SkillWorker",
+				newName: "SkillsId");
 
-            migrationBuilder.AddForeignKey(
-                name: "FK_SkillWorker_Spheres_SkillsId",
-                table: "SkillWorker",
-                column: "SkillsId",
-                principalTable: "Spheres",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
-        }
+			_ = migrationBuilder.AddForeignKey(
+				name: "FK_SkillWorker_Spheres_SkillsId",
+				table: "SkillWorker",
+				column: "SkillsId",
+				principalTable: "Spheres",
+				principalColumn: "Id",
+				onDelete: ReferentialAction.Cascade);
+		}
 
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropForeignKey(
-                name: "FK_SkillWorker_Spheres_SkillsId",
-                table: "SkillWorker");
+		protected override void Down(MigrationBuilder migrationBuilder)
+		{
+			_ = migrationBuilder.DropForeignKey(
+				name: "FK_SkillWorker_Spheres_SkillsId",
+				table: "SkillWorker");
 
-            migrationBuilder.RenameColumn(
-                name: "SkillsId",
-                table: "SkillWorker",
-                newName: "SpheresId");
+			_ = migrationBuilder.RenameColumn(
+				name: "SkillsId",
+				table: "SkillWorker",
+				newName: "SpheresId");
 
-            migrationBuilder.AddForeignKey(
-                name: "FK_SkillWorker_Spheres_SpheresId",
-                table: "SkillWorker",
-                column: "SpheresId",
-                principalTable: "Spheres",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
-        }
-    }
+			_ = migrationBuilder.AddForeignKey(
+				name: "FK_SkillWorker_Spheres_SpheresId",
+				table: "SkillWorker",
+				column: "SpheresId",
+				principalTable: "Spheres",
+				principalColumn: "Id",
+				onDelete: ReferentialAction.Cascade);
+		}
+	}
 }

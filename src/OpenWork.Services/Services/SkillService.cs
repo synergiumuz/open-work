@@ -28,7 +28,7 @@ public class SkillService : ISkillService
 	public async Task<bool> RemoveAsync(long skillId)
 	{
 		Worker entity = await _repository.Workers.GetAsync(_identity.Id);
-		entity.Skills.Remove(await _repository.Skills.GetAsync(skillId));
+		_ = entity.Skills.Remove(await _repository.Skills.GetAsync(skillId));
 		return await _repository.SaveChangesAsync() > 0;
 	}
 }

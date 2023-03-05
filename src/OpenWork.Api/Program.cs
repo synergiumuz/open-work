@@ -1,6 +1,6 @@
 using OpenWork.Api.Configurations;
 
-var builder = WebApplication.CreateBuilder(args);
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.ConfigureDataAccess();
@@ -15,14 +15,14 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddService();
 builder.Services.ConfigureSwaggerAuthorize();
 
-var app = builder.Build();
+WebApplication app = builder.Build();
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 // Configure the HTTP request pipeline.
 if(app.Environment.IsDevelopment())
 {
-	app.UseSwagger();
-	app.UseSwaggerUI();
+	_ = app.UseSwagger();
+	_ = app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();

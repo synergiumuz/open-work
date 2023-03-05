@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 using OpenWork.DataAccess.Interfaces;
@@ -35,13 +34,13 @@ public class BusynessService : IBusynessService
 			End = dto.End,
 			WorkerId = _identity.Id
 		};
-		_repository.Busynesses.Add(entity);
+		_ = _repository.Busynesses.Add(entity);
 		return await _repository.SaveChangesAsync() > 0;
 	}
 
 	public async Task<bool> DeleteAsync(long id)
 	{
-		await _repository.Busynesses.DeleteAsync(id);
+		_ = await _repository.Busynesses.DeleteAsync(id);
 		return await _repository.SaveChangesAsync() > 0;
 	}
 

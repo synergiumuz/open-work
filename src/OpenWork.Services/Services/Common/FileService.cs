@@ -1,13 +1,11 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using System.IO;
+using System.Threading.Tasks;
+
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+
 using OpenWork.Domain.Common.Helpers;
 using OpenWork.Services.Interfaces.Common;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OpenWork.Services.Services.Common
 {

@@ -1,17 +1,14 @@
-﻿using OpenWork.DataAccess.Interfaces;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+using OpenWork.DataAccess.Interfaces;
 using OpenWork.Domain.Entities;
 using OpenWork.Services.Common.Utils;
 using OpenWork.Services.Dtos.Admins;
 using OpenWork.Services.Interfaces;
 using OpenWork.Services.Interfaces.Common;
 using OpenWork.Services.ViewModels.Admins;
-using OpenWork.Services.ViewModels.Users;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OpenWork.Services.Services
 {
@@ -45,27 +42,20 @@ namespace OpenWork.Services.Services
 
 		public async Task<IEnumerable<CategoryViewModel>> GetAllAsync(int page)
 		{
-			return (await _paginator.PaginateAsync(_repository.Categories.GetAll(), new PaginationParams(_pageSize, page))).Select(
-				x => new CategoryViewModel
-				{
-					Skills = x.Skills.ToList(),
-				}
-			);
+			return (await _paginator.PaginateAsync(_repository.Categories.GetAll(), new PaginationParams(_pageSize, page))).Select(x => (CategoryViewModel)x);
 		}
 
 		public async Task<CategoryViewModel> GetAsync(long id)
 		{
 			Category category = await _repository.Categories.GetAsync(id);
-			return new CategoryViewModel
-			{
-				Skills = category.Skills.ToList(),
-			};
+			return category;
 		}
 
-		public async Task<bool> UpdateAsync(CategoryCreateDto dto)
+		public async Task<bool> UpdateAsync(long id, CategoryCreateDto dto)
 		{
-			Category category = dto;
-			_ = _repository.Categories.Update(category);
+			Category entity = await _repository.Categories.GetAsync(id);
+			entity.Name = dto.Name;
+			_repository.Categories.Update(entity);
 			return await _repository.SaveChangesAsync() > 0;
 		}
 	}

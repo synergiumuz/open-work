@@ -27,7 +27,7 @@ public class CategoriesController : Controller
 		return Ok(await _service.GetAllAsync(page));
 	}
 
-	[HttpGet("get/{id}")]
+	[HttpGet("{id}")]
 	public async Task<IActionResult> GetAsync(long id)
 		=> Ok(await _service.GetAsync(id));
 
@@ -44,9 +44,9 @@ public class CategoriesController : Controller
 		return Ok(await _service.CreateAsync(dto));
 	}
 
-	[HttpPut]
-	public async Task<IActionResult> UpdateAsync([FromForm] CategoryCreateDto dto)
+	[HttpPut("{id}")]
+	public async Task<IActionResult> UpdateAsync([FromForm] CategoryCreateDto dto, long id)
 	{
-		return Ok(await _service.UpdateAsync(dto));
+		return Ok(await _service.UpdateAsync(id, dto));
 	}
 }

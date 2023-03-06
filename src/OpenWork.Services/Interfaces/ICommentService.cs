@@ -10,6 +10,7 @@ public interface ICommentService
 {
 	public Task<bool> CreateAsync(CommentCreateDto dto);
 	public Task<bool> UpdateAsync(CommentCreateDto dto);
+	public Task<bool> DeleteAsync(long id);
 	public Task<IEnumerable<Comment>> GetByUserAsync(long userId, int page);
 	public Task<IEnumerable<Comment>> GetByWorkerAsync(long workerId, int page);
 }

@@ -39,6 +39,12 @@ public class CommentService : ICommentService
 		return await _repository.SaveChangesAsync() > 0;
 	}
 
+	public async Task<bool> DeleteAsync(long id)
+	{
+		await _repository.Comments.DeleteAsync(id);
+		return await _repository.SaveChangesAsync() > 0;
+	}
+
 	public Task<IEnumerable<Comment>> GetByUserAsync(long userId, int page)
 	{
 		return _paginator.PaginateAsync(_repository.Comments.GetByUser(userId), new PaginationParams(_pageSize, page));

@@ -13,7 +13,6 @@ using OpenWork.Services.Interfaces;
 using OpenWork.Services.Interfaces.Common;
 using OpenWork.Services.Interfaces.Security;
 using OpenWork.Services.ViewModels.Workers;
-
 namespace OpenWork.Services.Services;
 
 public class WorkerService : IWorkerService

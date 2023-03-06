@@ -33,3 +33,19 @@ test:
       run: dotnet restore
     - name: Test
       run: dotnet test --configuration Release
+
+dockerize:
+    needs: test
+    runs-on: ubuntu-latest
+    env:
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Build Docker image
+      run: docker build -t $DOCKER_USERNAME/openworkapi -f src/OpenWork.Web/Dockerfile .
+    - name: Push Docker image
+      run: |
+        docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        docker push $DOCKER_USERNAME/openworkapi

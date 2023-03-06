@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
+using Microsoft.AspNetCore.Http;
+
 using OpenWork.Domain.Entities;
 using OpenWork.Services.Attributes;
 
@@ -21,6 +23,8 @@ public class WorkerRegisterDto
 
 	[Required, MaxLength(16, ErrorMessage = "Max Length 16"), MinLength(8, ErrorMessage = "Min Length 8"), StrongPassword(ErrorMessage = "Password should contain 1 capital, 1 lower, 1 number and 1 symbol at less")]
 	public string Password { get; set; } = string.Empty;
+
+	public IFormFile? Image { get; set; }
 
 	public static implicit operator Worker(WorkerRegisterDto workerDto)
 	{

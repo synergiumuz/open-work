@@ -103,9 +103,12 @@ public class UserService : IUserService
 
 	public async Task<bool> UpdateAsync(UserRegisterDto dto)
 	{
-		User entity = dto;
+		User entity = await _repository.Users.GetAsync(_identity.Id);
+		entity.Surname = dto.SurName;
+		entity.EmailVerified = dto.Email == entity.Email;
+		entity.Email = dto.Email;
+		entity.Name = dto.Name;
 		entity.Password = _hasher.Hash(dto.Password, dto.Email);
-		entity.Id = _identity.Id;
 		_ = _repository.Users.Update(entity);
 		return await _repository.SaveChangesAsync() > 0;
 	}

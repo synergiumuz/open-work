@@ -18,6 +18,7 @@ namespace OpenWork.Services.Services;
 
 public class WorkerService : IWorkerService
 {
+	private readonly IFileService _filer;
 	private readonly IUnitOfWork _repository;
 	private readonly IHasher _hasher;
 	private readonly IAuthManager _auth;
@@ -25,8 +26,9 @@ public class WorkerService : IWorkerService
 	private readonly IPaginatorService _paginator;
 	private int _pageSize = 20;
 
-	public WorkerService(IUnitOfWork repository, IHasher hasher, IAuthManager auth, IIdentityService identity, IPaginatorService paginator)
+	public WorkerService(IUnitOfWork repository, IHasher hasher, IAuthManager auth, IIdentityService identity, IPaginatorService paginator, IFileService filer)
 	{
+		_filer = filer;
 		_repository = repository;
 		_hasher = hasher;
 		_auth = auth;
@@ -107,15 +109,25 @@ public class WorkerService : IWorkerService
 	{
 		Worker entity = dto;
 		entity.Password = _hasher.Hash(dto.Password, dto.Email);
+		if(dto.Image is not null)
+			entity.Image = await _filer.SaveImageAsync(dto.Image);
 		_ = _repository.Workers.Add(entity);
 		return await _repository.SaveChangesAsync() > 0;
 	}
 
 	public async Task<bool> UpdateAsync(WorkerRegisterDto dto)
 	{
-		Worker entity = dto;
+		Worker entity = await _repository.Workers.GetAsync(_identity.Id);
+		if(dto.Image is not null)
+			entity.Image = await _filer.SaveImageAsync(dto.Image);
+		entity.PhoneVerified = entity.Phone == dto.Phone;
+		entity.Phone = dto.Phone;
+		entity.EmailVerified = entity.Email == dto.Email;
+		entity.LastSeen = DateTime.Now;
+		entity.Email = dto.Email;
+		entity.Name = dto.Name;
+		entity.Surname = dto.Surname;
 		entity.Password = _hasher.Hash(dto.Password, dto.Email);
-		entity.Id = _identity.Id;
 		_ = _repository.Workers.Update(entity);
 		return await _repository.SaveChangesAsync() > 0;
 	}

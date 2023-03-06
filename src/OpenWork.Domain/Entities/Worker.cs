@@ -24,6 +24,8 @@ public class Worker : Auditable
 
 	public string Image { get; set; } = string.Empty;
 
+	public bool Banned { get; set; }
+
 	public virtual IList<Busyness> Busynesses { get; set; } = new List<Busyness>();
 	public virtual IList<Skill> Skills { get; set; } = new List<Skill>();
 	public virtual IList<Comment> Comments { get; set; } = new List<Comment>();

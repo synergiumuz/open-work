@@ -98,11 +98,15 @@ public class WorkerService : IWorkerService
 	public async Task<string> LoginAsync(WorkerLoginDto dto)
 	{
 		Worker entity = await _repository.Workers.GetAsync(dto.Email);
-		if(entity is null)
+		if(entity is not null)
+			if(entity.Banned)
+				throw new Exception("Banned");
+			else if(_hasher.Verify(entity.Password, dto.Password, entity.Email))
+				return _auth.GenerateToken(entity);
+			else
+				throw new Exception("Invalid password");
+		else
 			throw new Exception("Worker not found");
-		if(!_hasher.Verify(entity.Password, dto.Password, entity.Email))
-			throw new Exception("Invalid password");
-		return _auth.GenerateToken(entity);
 	}
 
 	public async Task<bool> RegisterAsync(WorkerRegisterDto dto)

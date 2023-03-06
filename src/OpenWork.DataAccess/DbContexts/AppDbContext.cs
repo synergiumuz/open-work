@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
+using OpenWork.DataAccess.Configurations;
 using OpenWork.Domain.Entities;
 
 namespace OpenWork.DataAccess.DbContexts;
@@ -16,4 +17,10 @@ public class AppDbContext : DbContext
 	public virtual DbSet<Skill> Skills { get; } = default!;
 	public virtual DbSet<User> Users { get; } = default!;
 	public virtual DbSet<Worker> Workers { get; } = default!;
+
+	protected override void OnModelCreating(ModelBuilder modelBuilder)
+	{
+		base.OnModelCreating(modelBuilder);
+		modelBuilder.ApplyConfiguration(new SuperAdminConfiguration());
+	}
 }

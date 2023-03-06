@@ -8,9 +8,13 @@ namespace OpenWork.Api.Configurations;
 
 public static class DataAccessConfiguration
 {
-	public static void ConfigureDataAccess(this WebApplicationBuilder builder)
+	public static void ConfigureDataAccess(this WebApplicationBuilder builder, bool test = false)
 	{
-		string config = builder.Configuration.GetConnectionString("ElephantSQL");
+		string config;
+		if(test)
+			config = builder.Configuration.GetConnectionString("LocalDB");
+		else
+			config = builder.Configuration.GetConnectionString("ElephantSQL");
 		_ = builder.Services.AddDbContext<AppDbContext>(opt =>
 		{
 			_ = opt.UseNpgsql(config);

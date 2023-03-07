@@ -6,8 +6,9 @@ namespace OpenWork.Services.Interfaces.Common;
 
 public interface IConfirmationService
 {
-	public Task<bool> SendCode(string email);
+	public Task<bool> SendAsync(string email);
 
-	public Task<bool> ConfirmCode(EmailConfirmDto dto);
+	public Task<bool> ConfirmAsync(EmailConfirmDto dto);
 
+	public Task<bool> ConfirmAsync(PhoneConfirmDto dto);
 }

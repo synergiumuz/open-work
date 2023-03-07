@@ -10,40 +10,62 @@ namespace OpenWork.Api.Controllers;
 [ApiController]
 public class UsersController : Controller
 {
-	private readonly IUserService _userService;
+	private readonly IUserService _service;
 
 
-	public UsersController(IUserService userService)
+	public UsersController(IUserService service)
 	{
-		_userService = userService;
+		_service = service;
 	}
 
 
 
 	[HttpPost("register")]
 	[AllowAnonymous]
-	public async Task<IActionResult> RegisterAsync([FromForm] UserRegisterDto dto)
+	public async Task<IActionResult> RegisterAsync([FromBody] UserRegisterDto dto)
 	{
-		return Ok(await _userService.RegisterAsync(dto));
+		return Ok(await _service.RegisterAsync(dto));
 	}
 
 	[HttpPost("login")]
 	[AllowAnonymous]
-	public async Task<IActionResult> LoginAsync([FromForm] UserLoginDto dto)
+	public async Task<IActionResult> LoginAsync([FromBody] UserLoginDto dto)
 	{
-		return Ok(await _userService.LoginAsync(dto));
+		return Ok(await _service.LoginAsync(dto));
 	}
 
 	[HttpDelete]
 	[Authorize(Roles = "Admin, User")]
 	public async Task<IActionResult> DeleteAsync()
 	{
-		return Ok(await _userService.DeleteAsync());
+		return Ok(await _service.DeleteAsync());
 	}
 
-	[HttpPut("update")]
-	public async Task<IActionResult> UpdateAsync([FromForm] UserRegisterDto dto)
+	[HttpPut]
+	[Authorize(Roles = "Admin, User")]
+	public async Task<IActionResult> UpdateAsync([FromBody] UserRegisterDto dto)
 	{
-		return Ok(await _userService.UpdateAsync(dto));
+		return Ok(await _service.UpdateAsync(dto));
+	}
+
+	[HttpGet("base/{id}")]
+	[Authorize(Roles = "Admin, User")]
+	public async Task<IActionResult> GetBaseAsync(long id)
+	{
+		return Ok(await _service.GetBaseAsync(id));
+	}
+
+	[HttpGet("{id}")]
+	[Authorize(Roles = "Admin, User")]
+	public async Task<IActionResult> GetAsync(long id)
+	{
+		return Ok(await _service.GetAsync(id));
+	}
+
+	[HttpGet]
+	[Authorize("Admin")]
+	public async Task<IActionResult> GetAllAsync([FromQuery] int page = 1)
+	{
+		return Ok(await _service.GetAllAsync(page));
 	}
 }

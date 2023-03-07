@@ -1,0 +1,37 @@
+version: '3.9'
+services:
+  db:
+    build: 
+      context: .
+      dockerfile: apps/postgres/Dockerfile
+    image: openwork-api-db-image
+    container_name: openwork-api-db-container
+    restart: always
+    ports:
+      - 5433:5432
+    volumes: 
+      - openwork-api-db-volume:/var/lib/postgresql/data
+  web:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    image: openwork-api-web-image
+    container_name: openwork-api-web-container
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+    depends_on:
+      - db
+    networks:
+      - default
+    volumes:
+      - server_root_files:/app/wwwroot
+
+volumes:
+  server_root_files:
+    driver: local
+  online-market-db-volume:
+    driver: local

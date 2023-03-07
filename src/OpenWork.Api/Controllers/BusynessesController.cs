@@ -37,7 +37,7 @@ public class BusynessesController : Controller
 		return Ok(await _service.GetAllAsync(workerId, page));
 	}
 
-	[HttpPut]
+	[HttpGet("search")]
 	[Authorize(Roles = "User, Admin, Worker")]
 	public async Task<IActionResult> SearchAsync([FromBody] BusynessSearchDto dto, [FromQuery] int page = 1)
 	{

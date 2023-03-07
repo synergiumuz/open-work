@@ -1,8 +1,8 @@
 name: Build and Deploy
 on: 
-  push:
+  pull request:
     branches:
-      - main
+      - CICDExperiment
 
 jobs:
   build:
@@ -34,7 +34,7 @@ test:
     - name: Test
       run: dotnet test --configuration Release
 
-dockerize:
+"""dockerize:
     needs: test
     runs-on: ubuntu-latest
     env:
@@ -48,4 +48,5 @@ dockerize:
     - name: Push Docker image
       run: |
         docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-        docker push $DOCKER_USERNAME/openworkapi
+        docker push $DOCKER_USERNAME/openworkapi"""
+s

@@ -23,7 +23,7 @@ internal class ConfirmationService : IConfirmationService
 		_email = email;
 	}
 
-	public async Task<bool> ConfirmCode(EmailConfirmDto dto)
+	public async Task<bool> ConfirmAsync(EmailConfirmDto dto)
 	{
 		if(_cache.TryGetValue(dto.Email, out int code))
 			if(code != dto.Code)
@@ -50,7 +50,12 @@ internal class ConfirmationService : IConfirmationService
 			throw new Exception("Code lifetime expired");
 	}
 
-	public async Task<bool> SendCode(string email)
+	public Task<bool> ConfirmAsync(PhoneConfirmDto dto)
+	{
+		throw new NotImplementedException();
+	}
+
+	public async Task<bool> SendAsync(string email)
 	{
 		Random rndm = new Random();
 		int code = rndm.Next(100_000, 1_000_000);

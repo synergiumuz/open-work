@@ -17,13 +17,13 @@ public class CommentsController : ControllerBase
 	}
 	[HttpPost]
 	[Authorize(Roles = "User, Admin")]
-	public async Task<IActionResult> CreateAsync(CommentCreateDto dto)
+	public async Task<IActionResult> CreateAsync([FromBody] CommentCreateDto dto)
 	{
 		return Ok(await _service.CreateAsync(dto));
 	}
 	[HttpPut]
 	[Authorize(Roles = "User, Admin")]
-	public async Task<IActionResult> UpdateAsync(CommentCreateDto dto)
+	public async Task<IActionResult> UpdateAsync([FromBody] CommentCreateDto dto)
 	{
 		return Ok(await _service.UpdateAsync(dto));
 	}
@@ -38,5 +38,11 @@ public class CommentsController : ControllerBase
 	public async Task<IActionResult> GetByWorkerAsync(long workerId, [FromQuery] int page)
 	{
 		return Ok(await _service.GetByWorkerAsync(workerId, page));
+	}
+	[HttpDelete("{id}")]
+	[Authorize(Roles = "Admin")]
+	public async Task<IActionResult> DeleteAsync(long id)
+	{
+		return Ok(await _service.DeleteAsync(id));
 	}
 }

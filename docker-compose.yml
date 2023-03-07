@@ -30,9 +30,3 @@ services:
     volumes:
       - server_root_files:/app/wwwroot
 
-volumes:
-  server_root_files:
-    driver: server
-  online-market-db-volume:
-    driver: server
-

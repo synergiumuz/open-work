@@ -9,7 +9,7 @@ public class SuperAdminConfiguration : IEntityTypeConfiguration<User>
 {
 	public void Configure(EntityTypeBuilder<User> builder)
 	{
-		builder.HasData(new User
+		builder.HasData(new User()
 		{
 			Id = 1,
 			Name = "Admin",
@@ -19,7 +19,6 @@ public class SuperAdminConfiguration : IEntityTypeConfiguration<User>
 			Email = "khamidov357@gmail.com",
 			EmailVerified = true,
 			Password = "nQlxzFWIQ6Lp49C2vm9B9VvJdMkI3460HMK+GTxeMwc=",
-			Comments = new Comment[] { }
 		});
 	}
 }

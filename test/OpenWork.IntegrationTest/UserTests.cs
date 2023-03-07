@@ -1,9 +1,4 @@
-﻿using System.Net.Http.Json;
-
-using Microsoft.AspNetCore.Mvc.Formatters;
-using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using Microsoft.Net.Http.Headers;
+﻿using Microsoft.AspNetCore.Mvc.Testing;
 
 using OpenWork.IntegrationTest.Customs;
 using OpenWork.Services.Dtos.Users;

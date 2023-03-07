@@ -12,13 +12,10 @@ public static class DataAccessConfiguration
 	{
 		string config;
 		if(test)
-			config = builder.Configuration.GetConnectionString("LocalDB");
+			config = builder.Configuration.GetConnectionString("Test");
 		else
 			config = builder.Configuration.GetConnectionString("ElephantSQL");
-		_ = builder.Services.AddDbContext<AppDbContext>(opt =>
-		{
-			_ = opt.UseNpgsql(config);
-		});
+		_ = builder.Services.AddDbContext<AppDbContext>(opt => opt.UseNpgsql(config));
 		_ = builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 	}
 }

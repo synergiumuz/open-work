@@ -40,7 +40,7 @@ public class AdminService : IAdminService
 
 	public async Task<bool> MakeAdminAsync(long userId)
 	{
-		if(_identity.Id != 13)
+		if(_identity.Id != 1)
 			throw new Exception("Not super admin");
 		User entity = await _repository.Users.GetAsync(userId);
 		entity.Admin = true;

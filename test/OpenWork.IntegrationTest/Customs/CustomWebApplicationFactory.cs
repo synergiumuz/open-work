@@ -23,7 +23,7 @@ public class CustomWebApplicationFactory<TProgram> : WebApplicationFactory<TProg
 			services.Remove(dbConnectionDescriptor);
 			services.AddSingleton<DbConnection>(container =>
 			{
-				var connection = new NpgsqlConnection("host=localhost;port=5432;user id=postgres;database=open-work-local-db;password=5482");
+				var connection = new NpgsqlConnection("host=floppy.db.elephantsql.com;port=5432;database=cjupxcwj;user id=cjupxcwj;password=Bnjs8fil7y2ivkjjWepVvOhrve05RHCQ");
 				connection.Open();
 				return connection;
 			});

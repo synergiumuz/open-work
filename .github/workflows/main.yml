@@ -21,7 +21,6 @@ jobs:
 
 
   dockerize:
-    needs: test
     runs-on: ubuntu-latest
     env:
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}

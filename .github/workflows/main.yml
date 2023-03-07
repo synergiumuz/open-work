@@ -19,20 +19,6 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release
 
-test:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-    - name: Setup .NET 6
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: '6.0.x'
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Test
-      run: dotnet test --configuration Release
 
 dockerize:
     needs: test

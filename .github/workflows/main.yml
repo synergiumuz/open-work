@@ -29,11 +29,11 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
     - name: Build Docker image
-      run: docker build -t $DOCKER_USERNAME/oepnworkapi .
+      run: docker build -t $DOCKER_USERNAME/openwork-api .
     - name: Push Docker image
       run: |
         docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-        docker push $DOCKER_USERNAME/openworkapi
+        docker push $DOCKER_USERNAME/openwork-api
 
   deploy:
     name: Deploy AWS
@@ -48,4 +48,4 @@ jobs:
           username: ${{ secrets.HOST_USERNAME }}
           script: |
             cd ~/app
-            docker-compose up -d --no-deps --build openworkapi
+            docker-compose up -d --no-deps --build openwork-api

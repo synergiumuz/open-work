@@ -19,7 +19,7 @@ public static class ServiceConfiguration
 		_ = services.AddScoped<IAuthManager, AuthManager>();
 		_ = services.AddScoped<IWorkerService, WorkerService>();
 		_ = services.AddScoped<IUserService, UserService>();
-		_ = services.AddScoped<IEmailService, EmailService>();
+		_ = services.AddScoped<IEmailManager, EmailService>();
 		_ = services.AddScoped<IAuthManager, AuthManager>();
 		_ = services.AddScoped<IWorkerService, WorkerService>();
 		_ = services.AddScoped<IIdentityService, IdentityService>();

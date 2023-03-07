@@ -12,7 +12,7 @@ using OpenWork.Services.Interfaces.Common;
 
 namespace OpenWork.Services.Services.Common;
 
-public class EmailService : IEmailService
+public class EmailService : IEmailManager
 {
 	private readonly IConfiguration _config;
 	public EmailService(IConfiguration configuration)

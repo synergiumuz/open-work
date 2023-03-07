@@ -2,7 +2,7 @@
 
 using OpenWork.IntegrationTest.Customs;
 using OpenWork.Services.Dtos.Users;
-
+using System.Net.Http.Json;
 using Xunit;
 
 namespace OpenWork.IntegrationTest;

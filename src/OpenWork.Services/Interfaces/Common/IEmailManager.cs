@@ -2,7 +2,7 @@
 
 namespace OpenWork.Services.Interfaces.Common;
 
-public interface IEmailService
+public interface IEmailManager
 {
 	public Task<bool> SendCode(string email, int code);
 }

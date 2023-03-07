@@ -4,5 +4,5 @@ namespace OpenWork.Services.Interfaces.Common;
 
 public interface IEmailService
 {
-	public Task<bool> SendCode(string email, int code);
+	public Task<bool> SendCodeAsync(string email, int code);
 }

@@ -19,7 +19,7 @@ public class EmailService : IEmailService
 	{
 		_config = configuration.GetSection("EmailConnection");
 	}
-	public async Task<bool> SendCode(string email, int code)
+	public async Task<bool> SendCodeAsync(string email, int code)
 	{
 		MimeMessage mail = new MimeMessage();
 		mail.From.Add(MailboxAddress.Parse(_config["Email"]));

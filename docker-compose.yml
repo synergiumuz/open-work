@@ -9,8 +9,7 @@ services:
     restart: always
     ports:
       - 5433:5432
-    volumes: 
-      - openwork-api-db-volume:/var/lib/postgresql/data
+  
   web:
     build: 
       context: .
@@ -27,6 +26,3 @@ services:
       - db
     networks:
       - default
-    volumes:
-      - server_root_files:/app/wwwroot
-

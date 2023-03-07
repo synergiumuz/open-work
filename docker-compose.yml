@@ -35,3 +35,7 @@ volumes:
     driver: local
   online-market-db-volume:
     driver: local
+
+networks:
+  web:
+    external: true

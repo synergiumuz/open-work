@@ -108,7 +108,7 @@ public class UserService : IUserService
 	public async Task<bool> UpdateAsync(UserRegisterDto dto)
 	{
 		User entity = await _repository.Users.GetAsync(_identity.Id);
-		entity.Surname = dto.SurName;
+		entity.Surname = dto.Surname;
 		entity.EmailVerified = dto.Email == entity.Email;
 		entity.Email = dto.Email;
 		entity.Name = dto.Name;

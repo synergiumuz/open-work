@@ -26,16 +26,13 @@ services:
     depends_on:
       - db
     networks:
-      - web
+      - default
     volumes:
       - server_root_files:/app/wwwroot
 
 volumes:
   server_root_files:
-    driver: local
+    driver: server
   online-market-db-volume:
-    driver: local
+    driver: server
 
-networks:
-  web:
-    external: true

@@ -8,15 +8,15 @@ namespace OpenWork.Services.Dtos.Users;
 public class UserRegisterDto
 {
 
-	[Required(ErrorMessage = "Enter name")]
+	[Required(ErrorMessage = "Enter name"),MinLength(2),MaxLength(20),Name]
 
 	public string Name { get; set; } = string.Empty;
 
-	[Required(ErrorMessage = "Enter surname")]
+	[Required(ErrorMessage = "Enter surname"),MinLength(2), MaxLength(30)]
 
 	public string Surname { get; set; } = string.Empty;
 
-	[Required(ErrorMessage = "Enter email"), Email(ErrorMessage = "Enter valid email")]
+	[Required(ErrorMessage = "Enter email"), Email(ErrorMessage = "Enter valid email"),]
 
 	public string Email { get; set; } = string.Empty;
 

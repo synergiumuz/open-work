@@ -30,12 +30,16 @@ public class StrongPasswordAttribute : ValidationAttribute
 		bool isDigit = password.Any(x => char.IsDigit(x));
 		bool isLower = password.Any(x => char.IsLower(x));
 		bool isUpper = password.Any(x => char.IsUpper(x));
+		bool isSpace = password.Any(x => char.IsWhiteSpace(x));
 		if(!isLower)
 			return (IsValid: false, Message: "Password must be at least one lower letter!");
 		if(!isUpper)
 			return (IsValid: false, Message: "Password must be at least one upper letter!");
 		if(!isDigit)
 			return (IsValid: false, Message: "Password must be at least one digit!");
+		if(isSpace)
+			return (IsValid: false, Message: "Password does not contain with spaces!");
+
 
 		return (IsValid: true, Message: "Password is strong");
 	}

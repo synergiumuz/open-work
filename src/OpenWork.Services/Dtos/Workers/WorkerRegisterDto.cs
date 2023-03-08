@@ -10,10 +10,10 @@ namespace OpenWork.Services.Dtos.Workers;
 
 public class WorkerRegisterDto
 {
-	[Required(ErrorMessage = "Enter name")]
+	[Required(ErrorMessage = "Enter name"),MinLength(2), MaxLength(20),Name]
 	public string Name { get; set; } = string.Empty;
 
-	[Required(ErrorMessage = "Enter surname")]
+	[Required(ErrorMessage = "Enter surname"), MinLength(2), MaxLength(30)]
 	public string Surname { get; set; } = string.Empty;
 
 	[Required(ErrorMessage = "Enter email"), Email(ErrorMessage = "Enter valid email")]

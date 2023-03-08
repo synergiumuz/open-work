@@ -9,9 +9,9 @@ namespace OpenWork.UnitTest.Users;
 public class UserRegisterDtoTests
 {
 	[Theory]
-	[InlineData("Xamidov", "Komiljon", "some@mail.com", "SomeLong357++")]
-	[InlineData("Sobirjonov", "O'tkirbek", "different@tiut.uz", "AAaa@@11")]
-	[InlineData("Po'latov", "Temurbek", "temur40@mail.ru", "N0tl0ngP@ssword")]
+	[InlineData("Komiljon","Xamidov",  "some@mail.com", "SomeLong357++")]
+	[InlineData("O'tkirbek", "Sobirjonov", "different@tiut.uz", "AAaa@@11")]
+	[InlineData("Temurbek", "Po'latov", "temur40@mail.ru", "N0tl0ngP@ssword")]
 	public void UserRegisterDtoValidate_ReturnsTrue(string name, string surname, string email, string password)
 	{
 		UserRegisterDto dto = new UserRegisterDto()

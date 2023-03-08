@@ -14,6 +14,7 @@ public class CategoryCreateDto
 		return new Category()
 		{
 			Name = categoryDto.Name
+			//salom
 		};
 	}
 }

@@ -1,5 +1,4 @@
 using OpenWork.Api.Configurations;
-
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

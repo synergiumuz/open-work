@@ -29,14 +29,14 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
     - name: Build Docker image
-      run: docker build -t $DOCKER_USERNAME/openwork-api .
+      run: docker build -t $DOCKER_USERNAME/openwork-api -f Dockerfile .
     - name: Push Docker image
       run: |
         docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
         docker push $DOCKER_USERNAME/openwork-api
 
   deploy:
-    name: Deploy AWS
+    name: Deploy to AWS
     needs: dockerize
     runs-on: ubuntu-latest
     steps:

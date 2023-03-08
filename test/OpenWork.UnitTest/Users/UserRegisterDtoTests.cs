@@ -47,7 +47,7 @@ public class UserRegisterDtoTests
 	[InlineData("Name", "Surname", "some@mail.com", "ε=ε=ε=(~￣▽￣)~")]
 	[InlineData("Name", "Surname", "ε=ε=ε=(~￣▽￣)~@gmail.com", "Rea11yValid")]
 	[InlineData("Name", "Surname", "some@mail.ε=ε=ε=(~￣▽￣)~", "Rea11yValid")]
-	[InlineData("Name", "Surname", "what_about_incorrect_mails@gmail.dot", "Rea11yValid")]
+	[InlineData("Name", "Surname", "what$about$incorrect$mails@gmail.dot", "Rea11yValid")]
 	[InlineData("Name", "Surname", "or this@mail.com", "Rea11yValid")]
 	[InlineData("Name", "Surname", "$0l1d@agile.net", "Rea11yValid")]
 	public void UserRegisterDtoValidate_ReturnsFalse(string name, string surname, string username, string password)

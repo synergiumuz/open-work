@@ -48,7 +48,7 @@ public class WorkerRegisterDtoTests
 	[InlineData("Name", "Surname", "some@mail.com", "ε=ε=ε=(~￣▽￣)~", "+998230030293")]
 	[InlineData("Name", "Surname", "ε=ε=ε=(~￣▽￣)~@gmail.com", "Rea11yValid", "+998230030293")]
 	[InlineData("Name", "Surname", "some@mail.ε=ε=ε=(~￣▽￣)~", "Rea11yValid", "+998230030293")]
-	[InlineData("Name", "Surname", "what_about_incorrect_mails@gmail.dot", "Rea11yValid", "+998230030293")]
+	[InlineData("Name", "Surname", "what$about$incorrect$mails@gmail.dot", "Rea11yValid", "+998230030293")]
 	[InlineData("Name", "Surname", "or this@mail.com", "Rea11yValid", "+998230030293")]
 	[InlineData("Name", "Surname", "$0l1d@agile.net", "Rea11yValid", "+998230030293")]
 	[InlineData("Po'latov", "Temurbek", "temur40@mail.ru", "N0tl0ngP@ssword", "998993332222")]

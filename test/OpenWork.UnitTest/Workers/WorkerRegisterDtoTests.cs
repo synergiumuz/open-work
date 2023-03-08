@@ -9,17 +9,18 @@ namespace OpenWork.UnitTest.Workers;
 public class WorkerRegisterDtoTests
 {
 	[Theory]
-	[InlineData("Xamidov", "Komiljon", "some@mail.com", "SomeLong357++")]
-	[InlineData("Sobirjonov", "O'tkirbek", "different@tiut.uz", "AAaa@@11")]
-	[InlineData("Po'latov", "Temurbek", "temur40@mail.ru", "N0tl0ngP@ssword")]
-	public void WorkerRegisterDtoValidate_ReturnsTrue(string name, string surname, string email, string password)
+	[InlineData("Xamidov", "Komiljon", "some@mail.com", "SomeLong357++", "+998930090415")]
+	[InlineData("Sobirjonov", "O'tkirbek", "different@tiut.uz", "AAaa@@11", "+998978659854")]
+	[InlineData("Po'latov", "Temurbek", "temur40@mail.ru", "N0tl0ngP@ssword", "+998993212312")]
+	public void WorkerRegisterDtoValidate_ReturnsTrue(string name, string surname, string email, string password, string phone)
 	{
 		WorkerRegisterDto dto = new WorkerRegisterDto()
 		{
 			Surname = surname,
 			Email = email,
 			Password = password,
-			Name = name
+			Name = name,
+			Phone = phone
 		};
 		try
 		{

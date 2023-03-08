@@ -39,6 +39,7 @@ public class UserLoginDtoTests
 	[InlineData("itisemailhonestly@com", "SomeLong34+")]
 	[InlineData("", "somelong<3")]
 	[InlineData("@mail.ru", "SomeLong34+")]
+
 	[InlineData("valid@mail.com", "inv@l1dp@sw")]
 	[InlineData("maybe@tyri.com", "Inval1d	Password")]
 	[InlineData("			@			.				", "ReAlL0Ng!!")]

@@ -1,11 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System.Net;
+using System.Net.Mail;
+using System.Threading.Tasks;
 
-using MailKit.Net.Smtp;
 
 using Microsoft.Extensions.Configuration;
 
-using MimeKit;
-using MimeKit.Text;
 
 using OpenWork.Services.Interfaces.Common;
 
@@ -21,17 +20,16 @@ public class EmailService : IEmailService
 	}
 	public async Task<bool> SendCodeAsync(string email, int code)
 	{
-		MimeMessage mail = new MimeMessage();
-		mail.From.Add(MailboxAddress.Parse(_config["Email"]));
-		mail.To.Add(MailboxAddress.Parse(email));
-		mail.Subject = "Confimation Code for openwork.uz";
-		mail.Body = new TextPart(TextFormat.Html) { Text = code.ToString() };
-
-		SmtpClient smtp = new SmtpClient();
-		await smtp.ConnectAsync(_config["Host"], int.Parse(_config["Port"]), MailKit.Security.SecureSocketOptions.StartTls);
-		await smtp.AuthenticateAsync(_config["Email"], _config["Password"]);
-		_ = await smtp.SendAsync(mail);
-		await smtp.DisconnectAsync(true);
+		MailAddress from = new MailAddress(_config["Email"], "Open Work");
+		MailAddress to = new MailAddress(email);
+		MailMessage message = new MailMessage(from, to);
+		message.Subject = "Verification code for Open Work";
+		message.Body = $"<h2>{code}<h2>";
+		message.IsBodyHtml = true;
+		SmtpClient client = new SmtpClient(_config["Host"], int.Parse(_config["Port"]));
+		client.EnableSsl = true;
+		client.Credentials = new NetworkCredential(_config["Email"], _config["Password"]);
+		await client.SendMailAsync(message);
 		return true;
 	}
 }

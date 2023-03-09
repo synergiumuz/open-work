@@ -50,11 +50,6 @@ public class ConfirmationService : IConfirmationService
 			throw new Exception("Code lifetime expired");
 	}
 
-	public Task<bool> ConfirmAsync(PhoneConfirmDto dto)
-	{
-		throw new NotImplementedException();
-	}
-
 	public async Task<bool> SendAsync(string email)
 	{
 		Random rndm = new Random();

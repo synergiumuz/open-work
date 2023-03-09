@@ -8,7 +8,7 @@ namespace OpenWork.Services.Dtos.Users;
 public class UserRegisterDto
 {
 
-	[Required(ErrorMessage = "Enter name"),MinLength(2),MaxLength(20),Name]
+	[Required(ErrorMessage = "Enter name"),MinLength(2),MaxLength(20)]
 
 	public string Name { get; set; } = string.Empty;
 

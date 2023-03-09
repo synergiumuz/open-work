@@ -17,15 +17,9 @@ public class CommentsController : ControllerBase
 	}
 	[HttpPost]
 	[Authorize(Roles = "User, Admin")]
-	public async Task<IActionResult> CreateAsync([FromBody] CommentCreateDto dto)
+	public async Task<IActionResult> PostAsync([FromBody] CommentCreateDto dto)
 	{
-		return Ok(await _service.CreateAsync(dto));
-	}
-	[HttpPut]
-	[Authorize(Roles = "User, Admin")]
-	public async Task<IActionResult> UpdateAsync([FromBody] CommentCreateDto dto)
-	{
-		return Ok(await _service.UpdateAsync(dto));
+		return Ok(await _service.PostAsync(dto));
 	}
 	[HttpGet("user/{userId}")]
 	[Authorize(Roles = "Admin")]

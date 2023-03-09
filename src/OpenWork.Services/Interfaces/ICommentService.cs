@@ -1,16 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-using OpenWork.Domain.Entities;
 using OpenWork.Services.Dtos.Users;
+using OpenWork.Services.ViewModels.Comments;
 
 namespace OpenWork.Services.Interfaces;
 
 public interface ICommentService
 {
-	public Task<bool> CreateAsync(CommentCreateDto dto);
-	public Task<bool> UpdateAsync(CommentCreateDto dto);
+	public Task<bool> PostAsync(CommentCreateDto dto);
 	public Task<bool> DeleteAsync(long id);
-	public Task<IEnumerable<Comment>> GetByUserAsync(long userId, int page);
-	public Task<IEnumerable<Comment>> GetByWorkerAsync(long workerId, int page);
+	public Task<IEnumerable<CommentViewModel>> GetByUserAsync(long userId, int page);
+	public Task<IEnumerable<CommentViewModel>> GetByWorkerAsync(long workerId, int page);
 }

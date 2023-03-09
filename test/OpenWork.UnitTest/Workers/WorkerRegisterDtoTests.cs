@@ -61,7 +61,7 @@ public class WorkerRegisterDtoTests
 	[InlineData("Temurbek", "Po'latov", "temur40@mail.ru", "N0tl0ngP@ssword", "+998993332222\n")]
 	[InlineData("Temurbek", "Po'latov", "temur40@mail.ru", "N0tl0ngP@ssword", "\t+998993332222")]
 	[InlineData("Temurbek", "Po'latov", "temur40@mail.ru", "N0tl0ngP@ssword", "+99899 3332222")]
-	[InlineData("Temurbek", "Po'latov", "temur40@mail.ru", "N0tl0ngP@ssword", "+99s899333222")]
+	[InlineData("Temurbek", "Po'latov", "temur40@mail.ru", "N0tl0ngP@ssword", "+99s899333222")]  
 	public void WorkerRegisterDtoValidate_ReturnsFalse(string name, string surname, string username, string password, string phone)
 	{
 		WorkerRegisterDto dto = new WorkerRegisterDto()

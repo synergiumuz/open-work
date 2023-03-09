@@ -21,13 +21,8 @@ public class ConfirmationController : ControllerBase
 	{
 		return Ok(await _service.SendAsync(email));
 	}
-	[HttpPost("email")]
+	[HttpPost]
 	public async Task<IActionResult> ConfirmAsync([FromBody] EmailConfirmDto dto)
-	{
-		return Ok(await _service.ConfirmAsync(dto));
-	}
-	[HttpPost("phone")]
-	public async Task<IActionResult> ConfirmAsync([FromBody] PhoneConfirmDto dto)
 	{
 		return Ok(await _service.ConfirmAsync(dto));
 	}

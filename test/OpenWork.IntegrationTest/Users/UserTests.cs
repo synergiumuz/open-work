@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.Testing;
 
 using OpenWork.IntegrationTest.Customs;
 using OpenWork.Services.Dtos.Users;
-using System.Net.Http.Json;
+
 using Xunit;
 
 namespace OpenWork.IntegrationTest;
@@ -36,8 +36,8 @@ public class UserTests : IClassFixture<CustomWebApplicationFactory<Program>>
 	}
 
 	[Theory]
-	[InlineData("Sobirjonov", "O'tkirbek", "different@tiut.uz", "AAaa@@11")]
-	[InlineData("Po'latov", "Temurbek", "temur40@mail.ru", "N0tl0ngP@ssword")]
+	[InlineData("O'tkirbek", "Sobirjonov", "different@tiut.uz", "AAaa@@11")]
+	[InlineData("Temurbek", "Po'latov", "temur40@mail.ru", "N0tl0ngP@ssword")]
 	public async Task UserCycle_ReturnsTrue(string name, string surname, string email, string password)
 	{
 		try

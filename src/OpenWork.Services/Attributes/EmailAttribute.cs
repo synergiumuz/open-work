@@ -15,8 +15,8 @@ public class EmailAttribute : ValidationAttribute
 		if(!regex.Match(value.ToString()!).Success)
 			return new ValidationResult("Enter correct email!");
 		int[] parts = value.ToString().Split("@").Select(x => x.Length).ToArray();
-		if(parts[0] + parts[1] > 256)
-			return new ValidationResult("Max length 256");
+		if (parts[0] + parts[1] > 256)
+			return new ValidationResult("Max length 256"); 
 		if(parts[0] > 64)
 			return new ValidationResult("Local part max length 64");
 		if(parts[1] > 255)

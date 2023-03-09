@@ -10,7 +10,7 @@ namespace OpenWork.Services.Dtos.Workers;
 
 public class WorkerRegisterDto
 {
-	[Required(ErrorMessage = "Enter name"),MinLength(2), MaxLength(20),Name]
+	[Required(ErrorMessage = "Enter name"),MinLength(2), MaxLength(20)]
 	public string Name { get; set; } = string.Empty;
 
 	[Required(ErrorMessage = "Enter surname"), MinLength(2), MaxLength(30)]
@@ -19,6 +19,7 @@ public class WorkerRegisterDto
 	[Required(ErrorMessage = "Enter email"), Email(ErrorMessage = "Enter valid email")]
 	public string Email { get; set; } = string.Empty;
 
+	[Required(ErrorMessage = "Enter phone"),PhoneNumber]
 	public string Phone { get; set; } = string.Empty;
 
 	[Required, MaxLength(16, ErrorMessage = "Max Length 16"), MinLength(8, ErrorMessage = "Min Length 8"), StrongPassword(ErrorMessage = "Password should contain 1 capital, 1 lower, 1 number and 1 symbol at less")]

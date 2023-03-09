@@ -29,6 +29,7 @@ public static class ServiceConfiguration
 		_ = services.AddScoped<ICommentService, CommentService>();
 		_ = services.AddScoped<IBusynessService, BusynessService>();
 		_ = services.AddScoped<IFileService, FileService>();
+		_ = services.AddScoped<IConfirmationService, ConfirmationService>();
 
 
 	}

@@ -10,7 +10,7 @@ using OpenWork.Services.Interfaces.Common;
 
 namespace OpenWork.Services.Services;
 
-internal class ConfirmationService : IConfirmationService
+public class ConfirmationService : IConfirmationService
 {
 	private readonly IUnitOfWork _repository;
 	private readonly IMemoryCache _cache;

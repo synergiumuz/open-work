@@ -30,7 +30,6 @@ public static class ServiceConfiguration
 		_ = services.AddScoped<IBusynessService, BusynessService>();
 		_ = services.AddScoped<IFileService, FileService>();
 		_ = services.AddScoped<IConfirmationService, ConfirmationService>();
-
-
+		_ = services.AddScoped<IAdminService, AdminService>();
 	}
 }

@@ -22,5 +22,6 @@ public class AppDbContext : DbContext
 	{
 		base.OnModelCreating(modelBuilder);
 		modelBuilder.ApplyConfiguration(new SuperAdminConfiguration());
+		modelBuilder.ApplyConfiguration(new BaseWorkerConfiguration());
 	}
 }

@@ -26,4 +26,9 @@ public class AdminsController : ControllerBase
 	{
 		return Ok(await _service.MakeAdminAsync(id));
 	}
+	[HttpDelete("reset")]
+	public async Task<IActionResult> ResetAsync()
+	{
+		return Ok(await _service.ResetAsync());
+	}
 }

@@ -2,7 +2,7 @@ using OpenWork.Api.Configurations;
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.ConfigureDataAccess();
+builder.ConfigureDataAccess(true);
 builder.ConfigureAuth();
 
 builder.Services.AddControllersWithViews();
